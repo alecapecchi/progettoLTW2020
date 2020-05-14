@@ -4,7 +4,7 @@ window.onload = function(){
     }
 }
 
-fucntion rememberme(){
+function rememberme(){
     var user = document.getElementById("user").value;
     var passw = document.getElementById("password").value;
 
@@ -21,4 +21,13 @@ function getremember(){
         document.getElementById("password").value =passw;
     }
 
+}
+function validLogin(){
+    if(grecaptcha && grecaptcha.getResponse().length > 0){
+
+        return true;}
+    
+    else{//The recaptcha is not cheched
+    alert('Oops, recaptcha is not checked!');
+    return false;}
 }

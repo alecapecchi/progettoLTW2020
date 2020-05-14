@@ -1,33 +1,63 @@
-function validForm(){
+function validForm(formsignup){
 
-    if(document.formsignup.name.value=""){
+    if(formsignup.inputName.value===""){
         alert("Insert Name");
         return false;
     }
-    if(document.formsignup.surname.value=""){
+    if(formsignup.inputLname.value===""){
         alert("Insert Surname");
         return false;
     }
-    if(document.formsignup.mail.value=""){
+    if(formsignup.inputEmail.value===""){
         alert("Insert e-mail");
         return false;
-    }
-    if(document.formsignup.password.value="" || 
-        document.formsignup.password.size < 8){
+    }/*
+    if(!validateEmail(formsignup.inputEmail.value)){
+
+        alert("Insert valid e-mail");
+        return false;
+    }*/
+    if(formsignup.inputpw.value==="" || formsignup.inputpw.value.size < 8){
         alert("Invalid Password");
         return false;
     }
-    if(document.formsignup.confirmpassword.value="" ||  
-    document.formsignup.password.value !=  document.formsignup.confirmpassword.value){
-        alert("Invalid Password. Check Password");
+    if(formsignup.inputpw.value !=  formsignup.confermaInputPw.value){
+        alert("Passwords don't match. Check Password");
         return false;
     }
-
+    if(!validaRecap()){
+        alert('Oops, recaptcha is not checked!');
+        return false;
+    }
+    //alert('All good');
     return true;
+    //return true;
 }
 
 function showPassword(){
     var pass = document.getElementById("mypassword");
-    if(pass.type === "password"){pass.type= "text";}
-    else{pass.type="password";}
+    var pass_conf = document.getElementById("confirmpassword");
+    if(pass.type === "password"){
+        pass.type= "text";
+        pass_conf.type= "text";
+
+}
+    else{
+        pass.type="password";
+        pass_conf.type="password";
+        }
+}
+
+function validateEmail(email) {
+    var re ="^\S+@\S+$";
+    return re.test(String(email).toLowerCase());
+}
+
+function validaRecap(){
+    if(grecaptcha && grecaptcha.getResponse().length > 0){
+
+        return true;}
+    
+    else{//The recaptcha is not cheched
+    return false;}
 }

@@ -55,4 +55,4 @@ html body {
     left: 50%;
     transform: translate(-50%, -50%);
 }
-}
+.g-recaptcha > div{margin: 0 auto;}
