@@ -36,8 +36,10 @@ else{
     $foto=$_POST['inputImg'];
     $quantita_mag=$_POST['inputQty'];
 
-    $query4="INSERT into ef_schema.prodotto values ($prod_code, $nome, $categoria, $prezzo,$foto,$quantita_mag) ";
-    $data=pg_query_params($dbconn, $query4, array($nome , $categoria, $prezzo,$foto,$quantita_mag));
+    //$query4="INSERT into ef_schema.prodotto values ('$prod_code', '$nome', '$categoria', '$prezzo','$foto','$quantita_mag') ";
+    $query4="INSERT into ef_schema.prodotto values ($1, $2, $3, $4,$5,$6) ";
+    
+    $data=pg_query_params($dbconn, $query4, array($prod_code,$nome , $categoria, $prezzo,$foto,$quantita_mag));
     if($data){
     header("Location:catalogue.php");
     }}
