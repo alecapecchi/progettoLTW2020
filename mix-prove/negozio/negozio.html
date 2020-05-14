@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<title>The Entertainment Factory</title>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width-device−width, initial−scale=1"/>
+<link rel="stylesheet" href="../../css/bootstrap.min.css">
+<link  rel="stylesheet" href="custom_prod.css"/>
+<body class="text-center">
+  <nav class="navbar navbar-light navbar-expand-lg">
+    <ul class="navbar-nav">
+      <a class="navbar-brand" href="../home/index.html">
+        <img src="logo_new.png" alt="Logo" style="width:40px;">
+      </a>
+      <li class="nav-item">
+        <a class="nav-link active" href="orders.php">Orders</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="users.php">Users</a>
+      </li>
+      
+      <li class="nav-item">
+        <a class="nav-link" href="products.php">Catalogue</a>
+      </li>
+      
+    </ul>
+  </nav>
+
+
+  <div class="container bg-faded">
+    <h1>Cart</h1>
+    <hr class="big">
+   <div class="row">
+        <div class="col-4 mx-auto">
+            <div class="card card-body mb-2">
+                <img class="card-img-top mx-auto" src="action/nerf.png" style="width: 200px;">
+                <div class="card-body">
+                  <h5 class="card-title">Playmobil Pirates' Ship</h5>
+                  <p class="card-text">30 euro</p>
+                  <a onclick="show_popup()" href="#" class='btn btn-primary'>Add to Cart</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-4 mx-auto">
+            <div class="card card-body mb-2">
+                <img class="card-img-top mx-auto" src="action/trampoline.png" style="width: 200px;">
+                <div class="card-body">
+                  <h5 class="card-title">Playmobil Pirates' Ship</h5>
+                  <div class="cart-action">
+                    <p class="card-text" style="white-space: nowrap;">30 euro</p>
+                    <input type="text" class="product-quantity" name="quantity" value="1" size="2" /></div>
+                  <a href="#" class="btn btn-primary">Add to Cart</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-4 mx-auto">
+            <div class="card card-body mb-2">
+                <img class="card-img-top mx-auto" src="action/avengers.png" style="width: 200px;">
+                <div class="card-body">
+                  <h5 class="card-title">Playmobil Pirates' Ship</h5>
+                  <p class="card-text">30 euro</p>
+                  <a href="#" class="btn btn-primary">Add to Cart</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+    <div class="row">
+        <div class="col-4 mx-auto">
+            <div class="card card-body mb-2">
+                <img class="card-img-top mx-auto" src="action/star wars.png" style="height: 200px;">
+                <div class="card-body">
+                  <h5 class="card-title">Playmobil Pirates' Ship</h5>
+                  <p class="card-text">30 euro</p>
+                  <a href="#" class="btn btn-primary">Add to Cart</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-4 mx-auto">
+            <div class="card card-body mb-2">
+                <img class="card-img-top mx-auto" src="action/lightsaber.png" style="height: 200px;">
+                <div class="card-body">
+                  <h5 class="card-title">Playmobil Pirates' Ship</h5>
+                  <p class="card-text">30 euro</p>
+                  <p class="card-text"><i style="color: red;">Sorry, Item Out of Stock</i></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-4 mx-auto">
+            <div class="card card-body mb-2">
+                <img class="card-img-top mx-auto" src="action/playmobil.png" style="height: 200px;">
+                <div class="card-body">
+                  <h5 class="card-title">Playmobil Pirates' Ship</h5>
+                  <p class="card-text">30 euro</p>
+                  <p class="card-text"><i style="color: red;">Sorry, Item Out of Stock</i></p>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+  <br>
+  <br>
+  <footer id="sticky-footer" class="py-4 bg-dark text-white-50 text-left">
+    <div class="container text-center">
+      <p>Copyright: &copy; 2020 <a href="../index/index.html">The Entertainment Factory Inc.</a></p>
+    </div>
+  </footer>
+ 
+  <div id="snackbar">
+    Item Added to Cart
+    <img src="cart.png" style="width:30px" hspace="3"></div>
+  
+  
+  <script src="../../js/jquery.slim.min.js"></script>
+  <script>
+    function show_popup() {
+      var x = document.getElementById("snackbar");
+      x.className = "show";
+      setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+    }
+    </script>
+  <script type="text/javascript" lang="javascript" src="../../js/bootstrap.min.js"></script>
+  </body>
+  </html>
+    
