@@ -126,3 +126,11 @@ body {
     position: absolute;
     bottom: 10%;
 }
+
+.modal-dialog{
+  overflow-y: initial !important
+}
+.modal-body{
+  height: 400px;
+  overflow-y: auto;
+}

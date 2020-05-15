@@ -211,10 +211,69 @@ pg_close( $dbconn ) ;
   <br>
   <br>
   <footer id="sticky-footer" class="py-4 bg-dark text-white-50 text-left">
-    <div class="container text-center">
-      <p>Copyright: &copy; 2020 <a href="../home/index.php">The Entertainment Factory Inc.</a></p>
+  <div class="container text-center">
+    <p>Copyright: &copy; 2020 <a href="../home/index.php">The Entertainment Factory Inc.</a> -
+    <a type="button" data-toggle="modal" data-target="#modal_terms">
+  Terms
+        </a></p>
+  </div>
+</footer>
+
+
+
+
+<div class="modal fade" id="modal_terms" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Terms and Conditions</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body text-justify" >
+      <b>NOTE: This is a mock website for a fictional shop. It was created as the final project 
+        for the academic year’s 2019/2020 course “Linguaggi e Tecnologie per il Web”, at 
+        La Sapienza University of Rome. This is not an actual e-commerce website, and thus
+         no sales of any product can and/or will be performed. The following is a mock notice, 
+         no rights can be derived from it.</b> <br>
+         <hr>
+<ul>
+<li>Users’ information, given upon registration, and users’ orders are stored in the database. </li>
+<li>A non-logged in user can browse the website, and insert items in a cart. No information will be 
+  stored for a non-logged in user.</li>
+<li>A logged-in user will be able to perform an order, access his personal profile information, 
+  and play a game in the section “Play It”.</li>
+<li>A logged-in can access all his stored information on his personal profile page.</li>
+<li>A registered user is responsible for maintaining the security of his password. The Entertainment 
+  Factory Inc. will not be liable for any loss or damages from the user fails to maintain the security 
+  of the users’ account and password.</li>
+<li>The use of the website constitutes the agreement to, and acceptance of, this Terms of Service.</li>
+<li>The Entertainment Factory Inc. reserves the right to modify, suspend or terminate the service 
+  for any reason, without notice, at any time. Furthermore, violation of any of the terms specified 
+  will result in the suspension or termination of the users’ account.</li>
+<hr>
+<b>“PLAY IT” CONTEST TERMS and CONDITIONS</b><br>
+<li>The Contest begins at 12:00:01 a.m. CET on May 1st, 2020, and will continue until further notice.</li>
+<li>By participating in the Contest, each participant agrees to abide by and be bound by these Official 
+Rules.</li>
+<li>Every month a winner will be chosen among all the registered users’. That is the user with the 
+highest score for the Play It game, at 11:59:59 p.m. CET on the last day of the month. </li>
+<li>The winner will be given a coupon code valued 3 times his highest score. If the highest score was 
+achieved by two or more users, the winner will be the user that has been registered for a longer 
+period of time.</li>
+<li>The Entertainment Factory Inc. reserves the right to modify, suspend or terminate the contest 
+for any reason, without notice, at any time.</li>
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
     </div>
-  </footer>
+  </div>
+</div>
+
  
    
   <div id="snackbar">

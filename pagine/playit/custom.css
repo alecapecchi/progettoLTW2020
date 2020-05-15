@@ -2,7 +2,7 @@ body {
     background-image: url("bkg.jpg");
     background-repeat: no-repeat;
     background-color: #cccccc;
-    color:orange;
+    
   }
 h1{
   color: #ff5d3d;
@@ -61,4 +61,12 @@ h4{
   .btn-sample .badge { 
     color: #F28E46; 
     background-color: #FFFFFF; 
+  }
+
+  .modal-dialog{
+    overflow-y: initial !important
+  }
+  .modal-body{
+    height: 400px;
+    overflow-y: auto;
   }

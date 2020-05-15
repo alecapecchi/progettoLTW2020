@@ -20,3 +20,12 @@ html body {
   font-size: larger;
   color: (255,0,0,.5)!important;
 }
+
+
+.modal-dialog{
+  overflow-y: initial !important
+}
+.modal-body{
+  height: 400px;
+  overflow-y: auto;
+}

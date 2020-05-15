@@ -45,3 +45,11 @@ table {
 .btn-dele:hover {
   background-color: white;
 }
+
+.modal-dialog{
+  overflow-y: initial !important
+}
+.modal-body{
+  height: 400px;
+  overflow-y: auto;
+}
