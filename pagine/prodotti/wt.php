@@ -183,7 +183,7 @@ pg_close( $dbconn ) ;
    
   <div id="snackbar">
     Item Added to Cart
-    <img src="../cart.png" style="width:30px" hspace="3"></div>
+    <img src="cart.png" style="width:30px" hspace="3"></div>
 
 <script>
 function show_popup() {
