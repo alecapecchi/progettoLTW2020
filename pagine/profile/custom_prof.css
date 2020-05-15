@@ -1,0 +1,47 @@
+/**body{
+  height:100%;
+  background: linear-gradient(to bottom,#10aaff,#2288aa);
+}**/
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  th, td {
+    text-align: left;
+    padding: 8px;
+  }
+  hr.orange {
+    border: 7px solid orange;
+    border-right : 40%;
+    border-left: 40%;
+
+  }
+
+  hr.blue{
+    border: 10px solid navy;
+    border-left: 100px;
+    border-right: 100px;
+  }
+ .orange tr:nth-child(even) {background-color: #fcf2de;}
+ 
+ .blue tr:nth-child(even) {background-color: #dde4fd;}
+
+ .green tr:nth-child(even) {background-color: #f0fdeb;}
+
+ .white tr{background-color: #ffffff;}
+
+ 
+.btn-dele {
+  background-color: white; 
+  border: 2px; 
+  border-color: blue;
+  color: gray; 
+  padding: 12px 16px; 
+  font-size: 16px; 
+  cursor: pointer; 
+}
+.btn-dele:hover {
+  background-color: white;
+}

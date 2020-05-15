@@ -47,7 +47,7 @@ html body {
 .navbar a{
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif!important;
   font-size: larger;
-  color:(255,0,0,.5)!important;
+  color:(255,255,255,1)!important;
 }
 
 .sign-form{

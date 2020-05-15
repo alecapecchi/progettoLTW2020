@@ -1,3 +1,7 @@
+<?php 
+    //valori login da cambiare
+    $my_username='mp';
+    $loggedin=true;?>
 <!DOCTYPE html>
 <html>
 <title>The Entertainment Factory</title>
@@ -10,9 +14,22 @@
 <link rel="manifest" href="../fav/site.webmanifest">
 <link  rel="stylesheet" href="custom.css"/>
 <body class="text-center">
+  
 <br>
-  <nav class="navbar navbar-light navbar-expand-lg justify-content-center">
-    <ul class="navbar-nav">
+<nav class="navbar navbar-light navbar-expand-lg">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    <div class="navbar-collapse collapse w-100 order-1 order-md-1 dual-collapse2">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="" style="color:#80d1e4;">LeftLeftLeftLeftLeft</a>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="navbar-collapse collapse w-100 order-0 order-md-1 dual-collapse2">
+      <ul class="navbar-nav mx-auto">
 
       <li class="nav-item">
         <a class="nav-link" href="../about/about.html">About</a>
@@ -44,7 +61,34 @@
         <a class="nav-link" href="../cart/cart.php">Cart</a>
       </li>
     </ul>
+    </div>
+    <div class="navbar-collapse collapse w-100 order-2 dual-collapse2">
+        <ul class="navbar-nav ml-auto">
+        <?php if ($loggedin): ?>
+            <li class="nav-item">
+            <a class="nav-link" href="../profile/profile.php"><?php echo 'Welcome, ' . $my_username . '!';?></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="../login/logout.php"><u>Logout</u></a>
+            </li>
+        <?php else: ?>
+            <li class="nav-item">
+                <a class="nav-link" href="../login/login.html"><u>Login</u></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="../signup/signup.html"><u>Signup</u></a>
+            </li>
+            <?php endif ?>
+
+        </ul>
+    </div>
   </nav>
+
+
+
+
+
+
   <br>
   <br>
   <br>
@@ -56,6 +100,7 @@
     The highest scorer, at the end of the month, <br>
     wins a surprise :)!</h4>
 
+  
   <a href="../game/game.html " target="_blank" class="btn btn-sample" role="button">PLAY IT!</a>
 
   <br>
