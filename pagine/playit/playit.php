@@ -100,8 +100,15 @@
     The highest scorer, at the end of the month, <br>
     wins a surprise :)!</h4>
 
+
+    <?php if ($loggedin): ?>
+      <a href="../game/game.html " target="_blank" class="btn btn-sample" role="button">PLAY IT!</a>
+        <?php else: ?>
+          <a href="../login/login.html " class="btn btn-sample" role="button">PLAY IT!</a>
+            <?php endif ?>  
+
   
-  <a href="../game/game.html " target="_blank" class="btn btn-sample" role="button">PLAY IT!</a>
+  
 
   <br>
   <br>
