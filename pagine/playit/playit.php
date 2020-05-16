@@ -35,7 +35,7 @@
         <a class="nav-link" href="../about/about.html">About</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="playit.html">Play It!</a>
+        <a class="nav-link" href="playit.php">Play It!</a>
       </li>
 
       <li class="nav-item">
