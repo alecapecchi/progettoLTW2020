@@ -17,3 +17,10 @@ h2 {
     height: 400px;
     overflow-y: auto;
   }
+  .errorP{
+    text-align: center;
+    color: #FF0000;
+    padding: 20px 0 0 0;
+  }
+  
+  

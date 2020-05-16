@@ -1,18 +1,114 @@
-<?php 
-    //valori login da cambiare
-    $loggedin=true;
-    if($loggedin){
-      $my_username='mp';
-      $my_name="Mary";
-      $my_lastname="Poppins";
-      $my_email="mary@gmail.com";
-      $my_total=45;}
-      else{
-        header("Location:../home/index.php");
+<?php
+  //valori login da cambiare
+  $loggedin=true;
+  if($loggedin){
+	$my_username='mp';
+  $my_total=45;
+  $cart = array (
+    array("a1",2),
+    array("e2",1),
+    array("l2",2)
+  
+  );}
+	else{
+	  header("Location:../home/login.php");
+	}
 
-        require_once 'config.php'; 
-      }?>
-<!DOCTYPE html>
+
+
+error_reporting(1);
+session_start();
+
+require 'stripe/Stripe.php';
+
+$publishable_key 	= "pk_test_Lztn2yXWLHTbq5CnBrteONLE00ekCutsh7";
+$secret_key			= "sk_test_iRl7Mcpp49IkDGt0JwlOT3yl00LpWpNgGh";
+
+
+if(isset($_POST['sToken'])){
+	Stripe::setApiKey($secret_key);
+	$tokenid		= $_POST['sToken'];
+	$final_total 	= $_POST['inputTotal']*100;
+	
+	
+	try {
+		$charge 		= Stripe_Charge::create(array( 
+		"currency" 		=> "eur",
+		"amount" 		=> $final_total,
+		"source" 		=> $tokenid,
+		
+		)			  
+		);
+		
+		$id			= $charge['id'];
+		$amount 	= $charge['amount'];
+        $balance_transaction = $charge['balance_transaction'];
+        $currency 	= $charge['currency'];
+        $status 	= $charge['status'];
+        $date 	= date("Y-m-d H:i:s");
+		
+		$result = "succeeded";
+		
+
+		
+
+	$corrente=true;
+	$indirizzo=$_POST['inputAdd']." ".$_POST['inputhNum'];
+	$citta=$_POST['inputCity'];
+	$cap=$_POST['inputZip'];
+	$nazione=$_POST['inputNation'];
+		$dbconn = pg_connect( "host=localhost port=5432 dbname=ent_factory user=ale password=basi2" )
+or die ("Could not connect: " . pg_last_error());
+		$query="insert into ef_schema.ordine(corrente, indirizzo, citta, cap, nazione) values ( $1 , $2 , $3 , $4 , $5) ";
+    $data=pg_query_params($dbconn, $query, array($corrente, $indirizzo , $citta , $cap, $nazione))or die ("Prob: " . pg_last_error());
+    if($data){
+      $query0="SELECT max(codice) FROM ef_schema.ordine WHERE cap=$1";
+      $result=pg_query_params($dbconn, $query0, array($cap))or die ("Prob1: " . pg_last_error());
+      $num_rows = pg_num_rows($result);
+      
+      if($num_rows>0){
+          while($line=pg_fetch_array($result,null,PGSQL_ASSOC)){
+              $count=0;
+              foreach($line as $col_value){
+                  if($count==0){$codice_ord=$col_value;
+                  }
+                  $count+=1;
+  
+              }}
+     
+      
+      
+      $query1="insert into ef_schema.cliente_ordine values ( $1 , $2) ";
+      $data1=pg_query_params($dbconn, $query1, array($my_username, $codice_ord))or die ("Proba: " . pg_last_error());
+     
+     foreach($cart as $element){
+      $elementg=$element[0];
+      $qty=$element[1];
+      $query2="insert into ef_schema.ordine_prodotto values ( $1 , $2, $3) ";
+      $data2=pg_query_params($dbconn, $query2, array($elementg , $codice_ord,  $qty))or die ("Proby: " . pg_last_error());
+       
+      
+    }
+     $query3="UPDATE ef_schema.prodotto SET quantita_mag=quantita_mag-1 WHERE codice=$1";
+     $result3=pg_query_params($dbconn, $query3, array($elementg));
+     
+    }
+      
+
+		
+		}
+		
+		
+	header("location:conferma.php?id=".$codice_ord);
+		//exit;
+
+		}catch(Stripe_CardError $e) {			
+			$error = $e->getMessage();
+			$result = "declined";
+		}
+}
+
+?><!DOCTYPE html>
 <html>
 <title>The Entertainment Factory</title>
 <meta charset="utf-8"/>
@@ -93,37 +189,36 @@
   </nav>
 
 <br>
-  
-  <div class="container bg-faded" >
+<div class="container bg-faded" >
         <div class="row">
         <div class="col-10 mx-auto">
         <div class="card card-body mb-2" style='border-radius: 20px;'>
-    <form action="process.php" class="register-form sign-form"
-    method="POST" name="ae" >
+    <form action="" class="register-form sign-form"
+    method="POST" name="payForm" id="pf" >
         <h2 class="text-center font-weight-light pb-2">Payment details</h2>
     <h4 class="font-weight-normal text-left">Delivery</h4>
     <div class="form-row">
       <div class="form-group col-md-11 text-left">
         <label for="name">Address: </label>
-        <input type="text" class="form-control border_form" name="inputAdd"  id="add" required placeholder="Street address"/>
+        <input type="text" class="form-control border_form" value="via mele"name="inputAdd"  id="add" required placeholder="Street address"/>
       </div>
       <div class="form-group col-md-1 text-left">
         <label for="cat">Number: </label>
-        <input type="text" class="form-control border_form" name="inputhNum" id="hnum" required placeholder="Num"/>
+        <input type="text" class="form-control border_form" name="inputhNum" value="78" id="hnum" required placeholder="Num"/>
       </div>
     </div>
     <div class="form-row">
       <div class="form-group col-md-5 text-left">
         <label for="name">City: </label>
-        <input type="text" class="form-control border_form" name="inputCity"  id="city" required placeholder="City"/>
+        <input type="text" class="form-control border_form" name="inputCity" value="Roma"  id="city" required placeholder="City"/>
       </div>
       <div class="form-group col-md-5 text-left">
         <label for="cat">Nation: </label>
-        <input type="text" class="form-control border_form" name="inputNation" id="naz" required placeholder="Nation"/>
+        <input type="text" class="form-control border_form" name="inputNation" value="Italia" id="naz" required placeholder="Nation"/>
       </div>
       <div class="form-group col-md-2 text-left">
         <label for="prc">Zip code: </label>
-        <input type="text" class="form-control border_form" name="inputZip" id="zip" required placeholder="Zip Code"/>
+        <input type="text" class="form-control border_form" name="inputZip" value="00100" id="zip" required placeholder="Zip Code"/>
       </div>
     </div>
     
@@ -132,24 +227,60 @@
     <div class="form-row">
     <div class="form-group col-md-6 text-left">
         <label for="name">Name on Card: </label>
-        <input type="text" class="form-control border_form" name="inputName"  id="name" required placeholder="Name"/>
+        <input type="text" class="form-control border_form" name="inputName" value="Mary P" id="name" required placeholder="Name"/>
       </div>
       <div class="form-group col-md-6 text-left">
         <label for="code">Card Number: </label>
-        <input type="text" class="form-control border_form" name="inputCNum" id="cnum" required placeholder="Card Number"/>
+        <input type="text" class="form-control border_form" name="inputCNum" value="4242424242424242" id="cnum" data-stripe="number" maxlength="16"required placeholder="Card Number"/>
       </div>
       
     </div>
     <div class="form-row">
     <div class="form-group col-md-2 text-left">
-        <label for="name">Valid Thru: </label>
-        <input type="text" class="form-control border_form" name="inputVal"  id="val" required placeholder="MM-YY"/>
+        <label for="name">Exp Month: </label>
+       <!-- <input type="text" class="form-control border_form" name="inputVal"  id="val" required placeholder="MM-YY"/>-->
+       <select name="month" id="month" class="form-control border_form" data-stripe="exp_month">
+									<option value="01">01</option>
+									<option value="02">02</option>
+									<option value="03">03</option>
+									<option value="04">04</option>
+									<option value="05">05</option>
+									<option value="06">06</option>
+									<option value="07">07</option>
+									<option value="08">08</option>
+									<option value="09">09</option>
+									<option value="10">10</option>
+									<option value="11">11</option>
+									<option value="12">12</option>
+								</select>
+                </div>
+
+
+								<div class="form-group col-md-2 text-left">
+                <label for="name">Exp Year</label>
+								<select name="year" id="year" class="form-control border_form" data-stripe="exp_year">
+									<option value="20">2020</option>
+									<option value="21">2021</option>
+									<option value="22">2022</option>
+									<option value="23">2023</option>
+									<option value="24">2024</option>
+									<option value="25">2025</option>
+									<option value="26">2026</option>
+									<option value="27">2027</option>
+									<option value="28">2028</option>
+									<option value="29">2029</option>
+									<option value="30">2030</option>
+								</select>
+      
       </div>
+
+
+
       <div class="form-group col-md-1 text-left">
         <label for="code">CVC: </label>
-        <input type="text" class="form-control border_form" name="inputCVC" id="cvc" required placeholder="CVC"/>
+        <input type="text" class="form-control border_form" value="123" name="inputCVC" id="cvc" data-stripe="cvc" maxlength="3"required placeholder="CVC"/>
       </div>
-      <div class="form-group col-md-9 text-right"><br><br>
+      <div class="form-group col-md-7 text-right"><br><br>
       <h4 id="tot_text">Total: <?php echo $my_total;?> Euro</h4>
         </div>
       
@@ -159,6 +290,7 @@
      
     <div class="form-group text-right">
     <button type="submit" name="ae_btn" class="btn btn-danger text-right" >Submit</button></div>
+  
     </form>
 
     <hr id='couhr'>
@@ -258,14 +390,15 @@ for any reason, without notice, at any time.</li>
   
   <script src="../../js/jquery.slim.min.js"></script>
   <script type="text/javascript" lang="javascript" src="../../js/bootstrap.min.js"></script>
-  <script src="https://js.stripe.com/v3/"></script>
+  <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+  
   <script>
     
 $(document).ready(function(){
   $("#couponBtn").click(function(){
     if($("#codeCou").val().toUpperCase()=='LTW2020'){
-    $("#tot_text").text("Total: 0.20 Euro");
-    $("#tot").val("0.20");
+    $("#tot_text").text("Total: 1 Euro");
+    $("#tot").val("1");
     $("#couponBtn").hide();
     $("#couhr").hide();
     $("#codeCou").hide();
@@ -274,9 +407,33 @@ $(document).ready(function(){
 });
 </script>
 
+<script type="text/javascript">
+	Stripe.setPublishableKey('<?php print $publishable_key; ?>');
+  
+	$(function() {
+	  var $form = $('#pf');
+	  $form.submit(function(event) {
+		
+		Stripe.card.createToken($form, validateResponse);
+	
+		return false;
+	  });
+	});
 
+	function validateResponse(status, response) {
+	  
+	  var $myform = $('#pf');
+	
+	  if (!response.error) { 
+		var token = response.id;
 
-
-  </body>
-  </html>
-    
+		
+		$myform.append($('<input type="hidden" name="sToken">').val(token));
+	
+		$myform.get(0).submit();
+	  }
+	};
+	
+</script>
+</body>
+</html>
