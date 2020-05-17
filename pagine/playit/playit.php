@@ -23,7 +23,7 @@
     <div class="navbar-collapse collapse w-100 order-1 order-md-1 dual-collapse2">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="" style="color:#80d1e4;">LeftLeftLeftLeftLeft</a>
+                <a class="nav-link" href="" hidden style="color:#80d1e4;">LeftLeftLeftLeftLeft</a>
             </li>
             
         </ul>
@@ -102,7 +102,7 @@
 
 
     <?php if ($loggedin): ?>
-      <a href="../game/game.html " target="_blank" class="btn btn-sample" role="button">PLAY IT!</a>
+      <a href="../game/game.php " target="_blank" class="btn btn-sample" role="button">PLAY IT!</a>
         <?php else: ?>
           <a href="../login/login.html " class="btn btn-sample" role="button">PLAY IT!</a>
             <?php endif ?>  

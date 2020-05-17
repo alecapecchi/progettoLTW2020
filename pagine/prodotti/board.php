@@ -22,7 +22,7 @@
     <div class="navbar-collapse collapse w-100 order-1 order-md-1 dual-collapse2">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="" style="color:white;">LeftLeftLeftLeftLeft</a>
+                <a class="nav-link" href="" hidden style="color:white;">LeftLeftLeftLeftLeft</a>
             </li>
             
         </ul>
@@ -268,7 +268,7 @@ for any reason, without notice, at any time.</li>
 
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-danger"  data-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
