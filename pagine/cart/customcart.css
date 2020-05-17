@@ -1,0 +1,11 @@
+.mycontainer {
+    padding: 0;
+    display: block;
+    margin: 0 auto;
+    max-height: 100%;
+    max-width: 100%;
+    position: relative;
+}
+hr.big {
+    border: 10px solid orange;
+  }

@@ -12,6 +12,7 @@
 <link rel="icon" type="image/png" sizes="32x32" href="../fav/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="../fav/favicon-16x16.png">
 <link rel="manifest" href="../fav/site.webmanifest">
+<link  rel="stylesheet" href="../../fontawesome-free-5.13.0-web/css/all.css">
 <link  rel="stylesheet" href="custom_prod.css"/>
 <body class="text-center">
 <br>
@@ -57,7 +58,9 @@
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" href="cart/cart.php">Cart</a>
+        <a class="nav-link" href="cart/cart.php">Cart
+        <span class="fas fa-shopping-cart"></span>
+        </a>
       </li>
     </ul>
     </div>
