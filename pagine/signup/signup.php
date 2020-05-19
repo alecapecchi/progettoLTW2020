@@ -1,4 +1,9 @@
-
+<?php
+    session_start();
+    if (isset($_SESSION['loggedin'])) {
+    header("Location:../home/index.php");
+  }
+  ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,7 +24,7 @@
       <ul class="navbar-nav">
         
         <li class="nav-item">
-          <a class="nav-link" href="../about/about.html">About</a>
+          <a class="nav-link" href="../about/about.php">About</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="../playit/playit.php">Play It!</a>
@@ -68,16 +73,16 @@
     <div class="form-row">
       <div class="form-group col-md-6 text-left">
         <label for="name">Name: </label>
-        <input type="text" class="form-control border_form" name="inputName"  id="name" required placeholder="Ex. Gianluigi"/>
+        <input type="text" class="form-control border_form" name="inputName"  id="name" placeholder="Ex. Gianluigi"/>
       </div>
       <div class="form-group col-md-6 text-left">
         <label for="surname">Surname: </label>
-        <input type="text" class="form-control border_form" name="inputLname" id="surname" required placeholder="Ex. Buffon"/>
+        <input type="text" class="form-control border_form" name="inputLname" id="surname" placeholder="Ex. Buffon"/>
       </div>
     </div>
     <div class="form-group text-left">
       <label for="mail">Mail: </label><div class="input-group">
-      <input type="email" class="form-control border_form" name="inputEmail" id="mail" required placeholder="Ex. you@example.it">
+      <input type="email" class="form-control border_form" name="inputEmail" id="mail" placeholder="Ex. you@example.it">
     </div></div>
 
     <h4 class="font-weight-normal text-left">Account</h4 >
@@ -87,7 +92,7 @@
           <div class="input-group-prepend">
            <span class="input-group-text border_form" id="user">@</span>
           </div>
-          <input type="text" class="form-control border_form" name="inputusername" id="username" required placeholder="Username"/>
+          <input type="text" class="form-control border_form" name="inputusername" id="username" placeholder="Username"/>
         </div>
       </div>
 

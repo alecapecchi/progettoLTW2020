@@ -1,7 +1,10 @@
 <?php 
-    //valori login da cambiare
-    $my_username='mp';
-    $loggedin=false;?>
+    $loggedin=false;
+    session_start();
+    if (isset($_SESSION['loggedin'])) {
+    $my_username=$_SESSION['name'];
+    $loggedin=$_SESSION['loggedin'];}?>
+
 <!DOCTYPE html>
 <html>
 <title>The Entertainment Factory</title>
@@ -32,7 +35,7 @@
       <ul class="navbar-nav mx-auto">
       
       <li class="nav-item">
-        <a class="nav-link" href="../about/about.html">About</a>
+        <a class="nav-link" href="../about/about.php">About</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="../playit/playit.php">Play It!</a>
@@ -75,10 +78,10 @@
             </li>
         <?php else: ?>
             <li class="nav-item">
-                <a class="nav-link" href="../login/login.html"><u>Login</u></a>
+                <a class="nav-link" href="../login/login.php"><u>Login</u></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="../signup/signup.html"><u>Signup</u></a>
+                <a class="nav-link" href="../signup/signup.php"><u>Signup</u></a>
             </li>
             <?php endif ?>
 

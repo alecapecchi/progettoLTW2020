@@ -1,8 +1,10 @@
-<?php
-  //valori login da cambiare
-  $loggedin=true;
-  if($loggedin){
-	$my_username='mp';
+<?php 
+    $loggedin=false;
+    session_start();
+    if (isset($_SESSION['loggedin'])) {
+    $my_username=$_SESSION['name'];
+    $loggedin=$_SESSION['loggedin'];
+
   $my_total=45;
   $cart = array (
     array("a1",2),
@@ -57,8 +59,16 @@ if(isset($_POST['sToken'])){
 	$citta=$_POST['inputCity'];
 	$cap=$_POST['inputZip'];
 	$nazione=$_POST['inputNation'];
-		$dbconn = pg_connect( "host=localhost port=5433 dbname=ent_factory user=postgres password=c354497" )
-or die ("Could not connect: " . pg_last_error());
+		// ALE
+    $dbconn = pg_connect( "host=localhost port=5432
+    dbname=ent_factory user=ale password=basi2" )
+    or die ("Could not connect: " . pg_last_error());
+    
+    
+    /*SERGIO
+    $dbconn = pg_connect( "host=localhost port=5433
+    dbname=ent_factory user=postgres password=c354497" )
+    or die ("Could not connect: " . pg_last_error());*/
 		$query="insert into ef_schema.ordine(corrente, indirizzo, citta, cap, nazione) values ( $1 , $2 , $3 , $4 , $5) ";
     $data=pg_query_params($dbconn, $query, array($corrente, $indirizzo , $citta , $cap, $nazione))or die ("Prob: " . pg_last_error());
     if($data){
@@ -136,7 +146,7 @@ or die ("Could not connect: " . pg_last_error());
       <ul class="navbar-nav mx-auto">
 
       <li class="nav-item">
-        <a class="nav-link" href="../about/about.html">About</a>
+        <a class="nav-link" href="../about/about.php">About</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="../playit/playit.php">Play It!</a>
@@ -177,10 +187,10 @@ or die ("Could not connect: " . pg_last_error());
             </li>
         <?php else: ?>
             <li class="nav-item">
-                <a class="nav-link" href="../login/login.html"><u>Login</u></a>
+                <a class="nav-link" href="../login/login.php"><u>Login</u></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="../signup/signup.html"><u>Signup</u></a>
+                <a class="nav-link" href="../signup/signup.php"><u>Signup</u></a>
             </li>
             <?php endif ?>
 

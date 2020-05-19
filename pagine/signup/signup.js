@@ -11,12 +11,7 @@ function validForm(formsignup){
     if(formsignup.inputEmail.value===""){
         alert("Insert e-mail");
         return false;
-    }/*
-    if(!validateEmail(formsignup.inputEmail.value)){
-
-        alert("Insert valid e-mail");
-        return false;
-    }*/
+    }
     if(formsignup.inputpw.value==="" || formsignup.inputpw.value.size < 8){
         alert("Invalid Password");
         return false;
@@ -48,10 +43,7 @@ function showPassword(){
         }
 }
 
-function validateEmail(email) {
-    var re ="^\S+@\S+$";
-    return re.test(String(email).toLowerCase());
-}
+
 
 function validaRecap(){
     if(grecaptcha && grecaptcha.getResponse().length > 0){

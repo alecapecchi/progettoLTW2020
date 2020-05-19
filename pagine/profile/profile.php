@@ -1,12 +1,15 @@
 <?php 
-    //valori login da cambiare
-    $loggedin=true;
-    if($loggedin){
-    $my_username='mp';
-    $my_score=56;
-    $my_name="Mary";
-    $my_lastname="Poppins";
-    $my_email="mary@gmail.com";}
+    $loggedin=false;
+    session_start();
+    if (isset($_SESSION['loggedin'])) {
+    $my_username=$_SESSION['name'];
+    $loggedin=$_SESSION['loggedin'];
+    $my_score=$_SESSION['score'];
+    $my_name=$_SESSION['firstName'];
+    $my_lastname=$_SESSION['lastName'];
+    $my_email=$_SESSION['email'];
+  }
+    
     else{
       header("Location:../home/index.php");
     }?>
@@ -42,7 +45,7 @@
       <ul class="navbar-nav mx-auto">
 
       <li class="nav-item">
-        <a class="nav-link" href="../about/about.html">About</a>
+        <a class="nav-link" href="../about/about.php">About</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="playit.php">Play It!</a>
@@ -143,6 +146,7 @@
 
 <h2>Orders</h2>
 <hr class="orange">
+<br>
 
 
     <?php
@@ -188,12 +192,12 @@ foreach($line as $col_value){
     $count+=1;
 }
 
-if($count2!=0 && $codice_ordine!=$old){
+if($count2!=0 && $codice_ordine!=$old && $old_us==$my_username){
     $total=number_format((float)$total, 2, '.', '');
     echo " </table>
     <br>";
-    if($old_us==$my_username){
-    echo "<h4 class='ml-auto'>Total: $total</h4>";}
+    //if($old_us==$my_username){
+    echo "<h4 class='ml-auto'>Total: $total</h4>";//}
     echo "</div></div></div></div>  
 <br>";
 $total=0;}

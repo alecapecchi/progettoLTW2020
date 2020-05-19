@@ -27,25 +27,54 @@ $ip = $_SERVER['REMOTE_ADDR'];
 $url = 'https://www.google.com/recaptcha/api/siteverify?secret=' . urlencode($secretKey) .  '&response=' . urlencode($captcha);
 $response = file_get_contents($url);
 $responseKeys = json_decode($response,true);
+$firstName="";
+    $lastName="";
+    $email="";
+    $score="";
 if($responseKeys["success"]){
+    session_start();
     $username=$_POST['user'];
     $dbconn = pg_connect( "host=localhost port=5432 dbname=ent_factory user=ale password=basi2" ) or die ("Could not connect: " . pg_last_error()); 
     $query1="SELECT *from ef_schema.cliente where username=$1";
     $result=pg_query_params($dbconn, $query1, array($username));
     $num_rows = pg_num_rows($result);
     
+    
     if($num_rows>0){
         while($line=pg_fetch_array($result,null,PGSQL_ASSOC)){
             $count=0;
             foreach($line as $col_value){
-                if($count==4){$pass=$col_value;
-                }
+                if($count==1){$firstName=$col_value;}
+                elseif($count==2){$lastName=$col_value;}
+                elseif($count==3){$email=$col_value;}
+                elseif($count==4){$pass=$col_value;}
+                elseif($count==5){$score=$col_value;}
                 $count+=1;
+                
 
-            }}
+            }
+
+            //echo $firstName." first ";
+                //echo $lastName." last ";
+                //echo $email." email ";
+                //echo $score." score ";
+          }
 
             if (password_verify($_POST['password'], $pass)) {
-                header("Location:../home/index.php");
+              session_regenerate_id();
+            $_SESSION['loggedin'] = true;
+            $_SESSION['name'] = $_POST['user'];
+            $_SESSION['email'] = $email;
+            $_SESSION['score'] = $score;
+            $_SESSION['firstName'] = $firstName;
+            $_SESSION['lastName'] = $lastName;
+
+            if(isset($_SESSION['url'])) {
+              $url = $_SESSION['url'];
+               }
+             else {
+              $url = "/home/index.php"; }
+              header("Location:http://localhost:3000$url");
             }
             else{
                 echo "<br><br><br><br><div class='container bg-faded'>
@@ -57,7 +86,7 @@ if($responseKeys["success"]){
                       <h2 class='mx-auto'>Sorry, wrong username or password.
                        </h2>
                       <br>
-                      <h5 class='mx-auto'><a href='login.html'>Try again!</a></h5>        
+                      <h5 class='mx-auto'><a href='login.php'>Try again!</a></h5>        
                       
                       </div>
                       </div> </div> </div>";
@@ -73,7 +102,7 @@ if($responseKeys["success"]){
               <h2 class='mx-auto'>Sorry, wrong username or password.
                </h2>
               <br>
-              <h5 class='mx-auto'><a href='login.html'>Try again!</a></h5>        
+              <h5 class='mx-auto'><a href='login.php'>Try again!</a></h5>        
               
               </div>
               </div> </div> </div>";

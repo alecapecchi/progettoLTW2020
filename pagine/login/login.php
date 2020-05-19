@@ -1,3 +1,9 @@
+<?php
+    session_start();
+    if (isset($_SESSION['loggedin'])) {
+    header("Location:../home/index.php");
+  }
+  ?>
 <!DOCTYPE html>
 <html>
 
@@ -18,7 +24,7 @@
   <ul class="navbar-nav">
     
     <li class="nav-item">
-      <a class="nav-link" href="../about/about.html">About</a>
+      <a class="nav-link" href="../about/about.php">About</a>
     </li>
     <li class="nav-item">
       <a class="nav-link" href="../playit/playit.php">Play It!</a>
@@ -69,11 +75,13 @@
     <label class="form-check-label" onclick="return rememberme()" for="checkbox" >Remember me</label><br>
     </div>
     <div class="g-recaptcha mx-auto" data-sitekey="6LeKK_cUAAAAAG-E5cxzPwyNePI55kHC-E7voSM8" ></div> 
+  
+
     <br>
     <div class="form-row">
       <div class="form-group text-center col-sm-4"><button class="btn btn-outline-primary" name="login_btn"type="submit">Sign in</button></div>
       <div class="form-group text-center col-sm-4"><p>or</p></div>
-      <div class="form-group text-center col-sm-4"> <a class="btn btn-primary" href="../signup/signup.html">Sign up</a></div>
+      <div class="form-group text-center col-sm-4"> <a class="btn btn-primary" href="../signup/signup.php">Sign up</a></div>
        
     </div>
     

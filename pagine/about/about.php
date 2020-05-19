@@ -1,23 +1,27 @@
 <?php 
-   $loggedin=false;
-   session_start();
-   if (isset($_SESSION['loggedin'])) {
-   $my_username=$_SESSION['name'];
-   $loggedin=$_SESSION['loggedin'];}
-   $_SESSION['url'] = $_SERVER['REQUEST_URI'];?>
+    $loggedin=false;
+    session_start();
+    if (isset($_SESSION['loggedin'])) {
+    $my_username=$_SESSION['name'];
+    $loggedin=$_SESSION['loggedin'];}?>
 <!DOCTYPE html>
 <html>
-<title>The Entertainment Factory</title>
-<meta charset="utf-8"/>
-<meta name="viewport" content="width-device−width, initial−scale=1"/>
-<link rel="stylesheet" href="../../css/bootstrap.min.css">
+
+<title>Login Entertainment Factory</title>
+<meta name="login" content="width-device−width, initial−scale=1"/>
 <link rel="apple-touch-icon" sizes="180x180" href="../fav/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="../fav/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="../fav/favicon-16x16.png">
 <link rel="manifest" href="../fav/site.webmanifest">
-<link  rel="stylesheet" href="custom.css"/>
+<link rel="stylesheet" href="../../css/bootstrap.css"/>
+<link rel="stylesheet" href="../../css/bootstrap-grid.css"/>
+<link rel="stylesheet" href="../home/custom.css">
+<link  rel="stylesheet" href="../../fontawesome-free-5.13.0-web/css/all.css">
+
+<script src="../../js/jquery.slim.min.js"></script>
+<script type="text/javascript" lang="javascript" src="../../js/bootstrap.min.js"></script>
+
 <body class="text-center">
-  
 <br>
 <nav class="navbar navbar-light navbar-expand-lg">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
@@ -26,7 +30,7 @@
     <div class="navbar-collapse collapse w-100 order-1 order-md-1 dual-collapse2">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="" hidden style="color:#80d1e4;">LeftLeftLeftLeftLeft</a>
+                <a class="nav-link" href="" hidden style="color:white;">LeftLeftLeftLeftLeft</a>
             </li>
             
         </ul>
@@ -34,22 +38,22 @@
     <div class="navbar-collapse collapse w-100 order-0 order-md-1 dual-collapse2">
       <ul class="navbar-nav mx-auto">
 
-      <li class="nav-item">
-        <a class="nav-link" href="../about/about.php">About</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="playit.php">Play It!</a>
-      </li>
+    <li class="nav-item">
+      <a class="nav-link" href="about.php">About</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="../playit/playit.php">Play It!</a>
+    </li>
 
-      <li class="nav-item">
-        <a class="nav-link" ></a>
-      </li>
-      <a class="navbar-brand" href="../home/index.php">
-        <img src="logo_new.png" alt="Logo" style="width:40px;">
-      </a>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      Order
+    <li class="nav-item">
+      <a class="nav-link" ></a>
+    </li>
+    <a class="navbar-brand" href="index.php">
+      <img src="../home/logo_new.png" alt="Logo" style="width:40px;">
+    </a>
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Order
       </a>
       <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
         <a class="dropdown-item" href="../prodotti/board.php">Board Games</a>
@@ -58,13 +62,15 @@
         <a class="dropdown-item" href="../prodotti/dolls.php">Dolls</a>
         <a class="dropdown-item" href="../prodotti/electronic.php">Electronic Toys</a>
       </div>
-      </li>
+    </li>
 
-      <li class="nav-item">
-        <a class="nav-link" href="../cart/cart.php">Cart</a>
-      </li>
-    </ul>
-    </div>
+    <li class="nav-item">
+      <a class="nav-link" href="../cart/cart.php">Cart
+      <span class="fas fa-shopping-cart"></span>
+    </a>
+    </li>
+  </ul>
+  </div>
     <div class="navbar-collapse collapse w-100 order-2 dual-collapse2">
         <ul class="navbar-nav ml-auto">
         <?php if ($loggedin): ?>
@@ -87,40 +93,35 @@
     </div>
   </nav>
 
+<img class="cover" src="../home/cover.jpg" width="width-device−width">
 
-
-
-
-
-  <br>
-  <br>
-  <br>
-  <br>
-  <a href="https://fontmeme.com/fonts/new-super-mario-font-u-font/"><img src="https://fontmeme.com/permalink/200417/a52611658ccce8b66317c031aa2e940c.png" alt="new-super-mario-font-u-font" ></a>
-  <br>
-  <br>
-  <h4>Catch as many objects as possible! <br>
-    The highest scorer, at the end of the month, <br>
-    wins a surprise :)!</h4>
-
-
-    <?php if ($loggedin): ?>
-      <a href="../game/game.php " target="_blank" class="btn btn-sample" role="button">PLAY IT!</a>
-        <?php else: ?>
-          <a href="../login/login.php?fut='g'" class="btn btn-sample" role="button">PLAY IT!</a>
-            <?php endif ?>  
-
-  
-  
-
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-
-
-  <footer id="sticky-footer" class="py-4 bg-dark text-white-50 text-left">
+<br>
+<br>
+<div class="container">
+  <div class="pt-4 row row-cols-1 row-cols-md-2">
+    <div class="col mb-6">
+      <div class="card">
+        <img src="../prodotti/example.svg" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Alessandra</h5>
+          <p class="card-text">text about me</p>
+        </div>
+      </div>
+    </div>
+    <div class="col mb-6">
+      <div class="card">
+        <img src="../prodotti/example.svg" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Sergio</h5>
+          <p class="card-text">text about me</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+<br>
+<footer id="sticky-footer" class="py-4 bg-dark text-white-50 text-left">
   <div class="container text-center">
     <p>Copyright: &copy; 2020 <a href="../home/index.php">The Entertainment Factory Inc.</a> -
     <a type="button" data-toggle="modal" data-target="#modal_terms">
@@ -183,9 +184,5 @@ for any reason, without notice, at any time.</li>
     </div>
   </div>
 </div>
-
-  <script src="../../js/jquery.slim.min.js"></script>
-  <script type="text/javascript" lang="javascript" src="../../js/bootstrap.min.js"></script>
-  </body>
-  </html>
-    
+</body>
+</html>
