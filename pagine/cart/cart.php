@@ -47,7 +47,7 @@
     <li class="nav-item">
       <a class="nav-link" ></a>
     </li>
-    <a class="navbar-brand" href="index.php">
+    <a class="navbar-brand" href="../home/index.php">
       <img src="../home/logo_new.png" alt="Logo" style="width:40px;">
     </a>
     <li class="nav-item dropdown">

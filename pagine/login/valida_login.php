@@ -73,7 +73,7 @@ if($responseKeys["success"]){
               $url = $_SESSION['url'];
                }
              else {
-              $url = "/home/index.php"; }
+              $url = "/pagine/home/index.php"; }
               header("Location:http://localhost:3000$url");
             }
             else{

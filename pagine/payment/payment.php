@@ -124,6 +124,7 @@ if(isset($_POST['sToken'])){
 <meta charset="utf-8"/>
 <meta name="viewport" content="width-device−width, initial−scale=1"/>
 <link rel="stylesheet" href="../../css/bootstrap.min.css">
+<link  rel="stylesheet" href="../../fontawesome-free-5.13.0-web/css/all.css">
 <link rel="apple-touch-icon" sizes="180x180" href="../fav/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="../fav/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="../fav/favicon-16x16.png">
@@ -172,8 +173,10 @@ if(isset($_POST['sToken'])){
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" href="../cart/cart.php">Cart</a>
-      </li>
+      <a class="nav-link" href="../cart/cart.php">Cart
+      <span class="fas fa-shopping-cart"></span>
+    </a>
+    </li>
     </ul>
     </div>
     <div class="navbar-collapse collapse w-100 order-2 dual-collapse2">

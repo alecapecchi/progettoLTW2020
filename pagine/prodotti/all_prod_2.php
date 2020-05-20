@@ -61,7 +61,9 @@
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" href="cart/cart.php">Cart</a>
+      <a class="nav-link" href="../cart/cart.php">Cart
+        <span class="fas fa-shopping-cart"></span>
+        </a>
       </li>
     </ul>
     </div>
