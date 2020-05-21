@@ -21,6 +21,10 @@ $dbconn = pg_connect( "host=localhost port=5432 dbname=ent_factory user=ale pass
     email='$email', pw='$passN' WHERE username=$1";
     $result3=pg_query_params($dbconn, $query3, array($username));
     //echo "fatto";
+    $_SESSION['firstName']=$_POST['inputName'];    
+    $_SESSION['lastName']=$_POST['inputCog'];
+    $_SESSION['email']=$_POST['inputEmail'];
+
     header("Location:profile.php");
     
 
