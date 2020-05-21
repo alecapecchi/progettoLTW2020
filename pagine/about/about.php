@@ -101,7 +101,7 @@
   <div class="pt-4 row row-cols-1 row-cols-md-2">
     <div class="col mb-6">
       <div class="card">
-        <img src="../prodotti/example.svg" class="card-img-top" alt="...">
+        <img src="../prodotti/example.svg" class="card-img-top" alt="person">
         <div class="card-body">
           <h5 class="card-title">Alessandra</h5>
           <p class="card-text">text about me</p>
@@ -110,7 +110,7 @@
     </div>
     <div class="col mb-6">
       <div class="card">
-        <img src="../prodotti/example.svg" class="card-img-top" alt="...">
+        <img src="../prodotti/example.svg" class="card-img-top" alt="person">
         <div class="card-body">
           <h5 class="card-title">Sergio</h5>
           <p class="card-text">text about me</p>

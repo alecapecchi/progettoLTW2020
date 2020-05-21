@@ -144,7 +144,7 @@
   
   <div class="container bg-faded">
     <h1>Board Games</h1>
-    <hr class="big">
+    <hr class="blue">
 
     <?php
 //controllare che utente, password e port siano corretti per il dispositivo corrente

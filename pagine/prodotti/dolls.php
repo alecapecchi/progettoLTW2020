@@ -141,7 +141,7 @@
   
   <div class="container bg-faded">
     <h1>Dolls</h1>
-    <hr class="big">
+    <hr class="green">
 
     <?php
 //controllare che utente, password e port siano corretti per il dispositivo corrente

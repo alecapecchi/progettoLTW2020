@@ -13,7 +13,7 @@
   
   );}
 	else{
-	  header("Location:../home/login.php");
+	  header("Location:../login/login.php");
 	}
 
 
