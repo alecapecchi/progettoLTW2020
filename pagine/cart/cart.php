@@ -19,6 +19,9 @@
 <link rel="stylesheet" href="../home/custom.css">
 <link  rel="stylesheet" href="../../fontawesome-free-5.13.0-web/css/all.css">
 <script type = “text/javascript” src = “../../Vue/vue.js”></script>
+<script src=
+"http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.js">
+</script>
 
 <body class="text-center">
 <br>
@@ -99,31 +102,33 @@
   <br>
   <h1>Shopping Cart 
   </h1>
+  <br>
   <hr class="big"/>
   <br>
   <table class="table table-bordered text-center">
   <tr>
   <th>Photo </th>
   <th>Name</th>
-  <th>Quantity <span class="fas fa-euro-sign"></span></th>
+  <th>Quantity </th>
   <th>Price</th>
-  <th>Items Price</th>
+  <th>Item Price</th>
   </tr>
   
   <?php
-  // ALE
+  /* ALE
   $dbconn = pg_connect( "host=localhost port=5432
   dbname=ent_factory user=ale password=basi2" )
   or die ("Could not connect: " . pg_last_error());
+  */
   
-  
-  /*SERGIO
-  $dbconn = pg_connect( "host=localhost port=5433
+  //SERGIO
+  $dbconn = pg_connect( "host=localhost port=5432
   dbname=ent_factory user=postgres password=c354497" )
-  or die ("Could not connect: " . pg_last_error());*/
+  or die ("Could not connect: " . pg_last_error());
+  //*/
 
   
-  $coduser= "SELECT * FROM ef_schema.cliente_ordine WHERE username_cliente='mp'";
+  $coduser= "SELECT * FROM ef_schema.cliente_ordine WHERE username_cliente='prova'";
   $coduser= pg_query ($coduser) or die("Query failed: " . pg_last_error());
 
   while($linecod=pg_fetch_array($coduser,null,PGSQL_ASSOC)){
@@ -165,30 +170,78 @@
       }
       $itemprice=$prezzo;
       $prezzo*=$quantita;
-      $total+=$prezzo;
-    ?>
-    <th> <?php echo " <img src=../img/$photo style='width: 200px;'>" ?> </th>
-    <th> <?php echo " $nome" ?> </th>
-    <th> <button class="fas fa-minus"></button> 
-          <?php echo "  $quantita " ?>
-         <button class="fas fa-plus"></button>
-   </th>
-    <th> <?php echo " $prezzo" ?> </th>
-    <th> <?php echo " $itemprice " ?> </th>
-    <th><button class="fas fa-trash-alt"></button></th>
-    </tr>
-    <?php
+      //$total+=$prezzo;
+    $array[] = array($photo,$nome,$quantita,$prezzo,$itemprice);
+
     }
   }
+  $n = count($array);
+  for($i = 0; $i < $n; $i++){
+    $var0 = $array[$i][0];
+    $var1 = $array[$i][1];
+    $var2 = $array[$i][2];
+    $var3 = $array[$i][3];
+    $total +=$var3;
+    $var4 = $array[$i][4];
+    ?>
+    <div id="div<?php echo $i ?>">
+    <tr id="tr<?php echo $i ?>">
+    
+    <th id="th0<?php echo $i ?>"> <?php echo " <img src=../img/$var0 style='width: 200px;'>" ?> </th>
+    <th id="th1<?php echo $i ?>"> <?php echo " $var1 " ?> </th>
+    <th id="th2<?php echo $i ?>"> <?php echo " $var2 "  ?></th>
+    <th id="th3<?php echo $i ?>"> <?php echo " $var3 "  ?> <span class="fas fa-euro-sign "></span></th>
+    <th id="th4<?php echo $i ?>"> <?php echo " $var4 "  ?> <span class="fas fa-euro-sign"></span></th>
+    <th id="trush<?php echo $i ?>"><button id="trushbotton<?php echo $i ?>" class="fas fa-trash-alt"></button></th>
+    </tr>
+    
+    <script>
+  $(document).ready(function(){
+    $("#trushbotton<?php echo $i ?>").click(function(){
+      $("#th0<?php echo $i ?>").hide();
+      $("#th1<?php echo $i ?>").hide();
+      $("#th2<?php echo $i ?>").hide();
+      $("#th3<?php echo $i ?>").hide();
+      $("#th4<?php echo $i ?>").hide();
+      $("#trushbotton<?php echo $i ?>").hide();
+      $("#tr<?php echo $i ?>").hide();
+      $("#div<?php echo $i ?>").remove();
+            
+    });
+  });
+</script>
+    <?php
+  } 
+  
   pg_free_result($result) ;
   pg_close( $dbconn ) ;
   ?>
   </div>
   </table>
-  <p class="fas fa-shopping-cart"> Total: <?php echo " $total " ?>€</p>
+
+  <script>
+  $(document).ready(function(){
+    $("#couponBtn").click(function(){
+      if($("#codeCou").val().toUpperCase()=='LTW2020'){
+      $("#tot_text").text("Total: 1 Euro");
+      $("#tot").val("1");
+      $("#couponBtn").hide();
+      $("#couhr").hide();
+      $("#codeCou").hide();
+      $("#couH4").hide();}
+    });
+  });
+  </script>
   <br>
-  <a class="btn btn-primary" href="../prodotti/all_prod_1.php">Back to Shop</a>
-  <a class="btn btn-primary" href="../payment/payment.php">Go to payment</a>
+  <p class="fas fa-shopping-cart"> Total: <?php echo " $total " ?> <span class="fas fa-euro-sign"></span></p>
+  
+  <br>
+  <br>
+  <div class="form-row">
+    <div class="form-group text-left col-md-6"> <a class="btn btn-primary -left" href="../prodotti/all_prod_1.php">Back to Shop</a></div>
+    <div class="form-group text-right col-md-6"> <a class="btn btn-primary" href="../payment/payment.php">Go to payment</a> </div>
+  </div>
+
 </div>
 <br>
 </div>
@@ -200,8 +253,6 @@
         </a></p>
   </div>
 </footer>
-
-
 
 
 <div class="modal fade" id="modal_terms" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
