@@ -4,7 +4,12 @@
     if (isset($_SESSION['loggedin'])) {
     $my_username=$_SESSION['name'];
     $loggedin=$_SESSION['loggedin'];
-    $my_score=$_SESSION['score'];
+
+    $dbconn = pg_connect( "host=localhost port=5432 dbname=ent_factory user=ale password=basi2" ) or die ("Could not connect: " . pg_last_error()); 
+    $q = "SELECT * FROM ef_schema.cliente WHERE username='$my_username'";
+    $result = pg_query($q);
+    $row = pg_fetch_assoc($result);
+    $my_score = $row['score'];
     $my_name=$_SESSION['firstName'];
     $my_lastname=$_SESSION['lastName'];
     $my_email=$_SESSION['email'];
