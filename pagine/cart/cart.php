@@ -127,54 +127,12 @@
   or die ("Could not connect: " . pg_last_error());
   //*/
 
-  
-  $coduser= "SELECT * FROM ef_schema.cliente_ordine WHERE username_cliente='prova'";
-  $coduser= pg_query ($coduser) or die("Query failed: " . pg_last_error());
-
-  while($linecod=pg_fetch_array($coduser,null,PGSQL_ASSOC)){
-      $cont=0;
-      foreach($linecod as $col_value){
-        if($cont==0){$user=$col_value;}
-        elseif($cont==1){$cod=$col_value;}
-        $cont+=1;
-      }
-  }
-  $query="SELECT * FROM ef_schema.ordine_prodotto WHERE codice_ordine='$cod'";
-  $result=pg_query ($query) or die("Query failed: " . pg_last_error());
-  
-  /*
-  $query="SELECT * FROM ef_schema.ordine_prodotto WHERE codice_ordine='1'";
-  $result=pg_query ($query) or die("Query failed: " . pg_last_error());
-  */
   $total=0;
-  while($line=pg_fetch_array($result,null,PGSQL_ASSOC)){
-    
-    $count=0;
-    foreach($line as $col_value){
-      if($count==0){$codice_prodotto=$col_value;}
-      elseif($count==2){$quantita=$col_value;}
-      $count+=1;
-    }
-    
-    $art= "SELECT * FROM ef_schema.prodotto WHERE codice = '$codice_prodotto'";
-    $art= pg_query ($art) or die("Query failed: " . pg_last_error());
-    
-    while($lineart=pg_fetch_array($art,null,PGSQL_ASSOC)){
-      $count1=0;
-      foreach($lineart as $value){
-        if($count1==0){$cod=$value;}
-        if($count1==1){$nome=$value;}
-        if($count1==3){$prezzo=$value;}
-        if($count1==4){$photo=$value;}
-        $count1+=1;
-      }
-      $itemprice=$prezzo;
-      $prezzo*=$quantita;
-      //$total+=$prezzo;
-    $array[] = array($photo,$nome,$quantita,$prezzo,$itemprice);
 
-    }
-  }
+  $array=$_SESSION['arraycart'];
+
+  //$array[] = array($photo,$nome,$quantita,$prezzo,$itemprice);
+
   $n = count($array);
   for($i = 0; $i < $n; $i++){
     $var0 = $array[$i][0];

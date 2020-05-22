@@ -149,8 +149,12 @@
 
     <?php
 //controllare che utente, password e port siano corretti per il dispositivo corrente
+/*
 $dbconn = pg_connect( "host=localhost port=5432
-dbname=ent_factory user=ale password=basi2" )
+dbname=ent_factory user=ale password=basi2")
+*/
+$dbconn = pg_connect( "host=localhost port=5432
+dbname=ent_factory user=postgres password=c354497" )
 or die ("Could not connect: " . pg_last_error());
 $query="SELECT * FROM ef_schema.prodotto ORDER BY codice";
 $result=pg_query ($query) or die("Query failed: " . pg_last_error());
@@ -167,20 +171,23 @@ foreach($line as $col_value){
     elseif($count==4){$foto=$col_value;}
     elseif($count==5){$quant_magazzino=$col_value;}
     $count+=1;}
-    echo "\t<div class='col-4 mx-auto'>\n
+
+    echo "\t<div  class='col-4 mx-auto'>\n
     <div class='card card-body mb-2'>\n
         <img class='card-img-top mx-auto' src=../img/$foto style='width: 200px;'>\n
         <div class='card-body'>\n
           <h5 class='card-title'>$nome</h5>\n
           <p class='card-text'>$prezzo euro</p>\n";
+          
     if($quant_magazzino>0){
-      echo "<a href='#' onclick='show_popup()' class='btn btn-primary'>Add to Cart</a>\n";
+      echo "<a id='id$count3' href='#' onclick='show_popup($count3)' onclick='add($count3)' class='btn btn-primary'>Add to Cart</a>\n";
+      $prodcart[] =array($foto,$nome,'1',$prezzo,$prezzo);
+      $_SESSION['arraycart']=$prodcart;
     }
     else{ echo "<p class='card-text'><i style='color: red;'>Sorry, Item Out of Stock</i></p>";}
     echo"</div>\n
     </div>\n
 </div>\n";
-    
 
 if($count2<2){$count2+=1;}
 else{
@@ -293,7 +300,7 @@ for any reason, without notice, at any time.</li>
     <img src="cart.png" style="width:30px" hspace="3"></div>
 
 <script>
-function show_popup() {
+function show_popup(xd) {
   var x = document.getElementById("snackbar");
   x.className = "show";
   setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);

@@ -97,23 +97,46 @@
 
 <br>
 <br>
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4">What We Do</h1>
+    <p class="lead">We are a young company specialized in entertainment, offering unbeatable prices on all our products (
+      <a class="lead" href="../prodotti/board.php">Board Games</a>,
+      <a class="lead" href="../prodotti/wt.php"> Wooden Toys</a>,
+      <a class="lead" href="../prodotti/at.php">Action</a>,
+      <a class="lead" href="../prodotti/dolls.php">Dolls</a>,
+      <a class="lead" href="../prodotti/electronic.php">Electronic Toys</a>
+      ) and get incredible discounts while enjoying our 
+      <a class="lead" href="../playit/playit.php"> game</a>.
+
+    </p>
+  </div>
+</div>
+
 <div class="container">
   <div class="pt-4 row row-cols-1 row-cols-md-2">
     <div class="col mb-6">
-      <div class="card">
-        <img src="../prodotti/example.svg" class="card-img-top" alt="person">
-        <div class="card-body">
-          <h5 class="card-title">Alessandra</h5>
-          <p class="card-text">text about me</p>
+        <div class="card">
+          <img src="../prodotti/example.svg" class="card-img-top" alt="person">
+          <div class="card-body">
+            <h5 class="card-title">Alessandra</h5>
+            <p class="card-text">text about ale</p>
+            <div class="col mb-2"><a href="#" class="fab fa-instagram-square icon text-center"> Instagram</a> </div>
+            <div class="col mb-2"><a href="#" class="fab fa-facebook-square"> Facebook</a></div>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="col mb-6">
-      <div class="card">
-        <img src="../prodotti/example.svg" class="card-img-top" alt="person">
-        <div class="card-body">
-          <h5 class="card-title">Sergio</h5>
-          <p class="card-text">text about me</p>
+      <div class="col mb-6">
+        <div class="card">
+          <img src="sergio.jpg"  class="card-img-top" alt="person">
+          <div class="card-body">
+            <h5 class="card-title">Sergio Torrejón Espada</h5>
+            <p class="card-text">I'm 24 years old. I was born in Spain (Cádiz) and I study computer engineering. <br>
+            I study computer science because I love learning about new technologies and being part of their advancement.
+            </p>
+            <div class="col mb-2"><a href="https://www.instagram.com/sergiotorrejon12/" class="fab fa-instagram-square"> Instagram</a> </div>
+            <div class="col mb-2"><a href="https://www.facebook.com/sergio.torrejonespada" class="fab fa-facebook-square"> Facebook</a></div>
+          </div>
         </div>
       </div>
     </div>
