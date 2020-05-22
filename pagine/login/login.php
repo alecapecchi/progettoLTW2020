@@ -41,17 +41,17 @@
     Order
     </a>
     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-      <a class="dropdown-item" href="#">Action</a>
-      <a class="dropdown-item" href="#">Another action</a>
-      <a class="dropdown-item" href="#">Something else here</a>
-      <a class="dropdown-item" href="#">Another action</a>
-      <a class="dropdown-item" href="#">Something else here</a>
-    </div>
+        <a class="dropdown-item" href="../prodotti/board.php">Board Games</a>
+        <a class="dropdown-item" href="../prodotti/wt.php">Wooden Toys</a>
+        <a class="dropdown-item" href="../prodotti/at.php">Action</a>
+        <a class="dropdown-item" href="../prodotti/dolls.php">Dolls</a>
+        <a class="dropdown-item" href="../prodotti/electronic.php">Electronic Toys</a>
+      </div>
     </li>
 
     <li class="nav-item">
       <div>
-      <a class="nav-link" href="#">Cart</a>
+      <a class="nav-link" href="../cart/cart.php">Cart</a>
 
     </div>
     </li>

@@ -3,7 +3,11 @@
     session_start();
     if (isset($_SESSION['loggedin'])) {
     $my_username=$_SESSION['name'];
-    $loggedin=$_SESSION['loggedin'];}?>
+    $loggedin=$_SESSION['loggedin'];}
+  //  $_SESSION['arraycart']=array();
+  //  $_SESSION['total']=0;
+    
+    ?>
 
 <!DOCTYPE html>
 <html>
@@ -17,7 +21,13 @@
 <link rel="manifest" href="../fav/site.webmanifest">
 <link  rel="stylesheet" href="../../fontawesome-free-5.13.0-web/css/all.css">
 <link  rel="stylesheet" href="custom_prod.css"/>
+<?php if(isset($_GET['action'])):?>
+<body class="text-center" onload="show_popup()">
+<?php else:?>
 <body class="text-center">
+<?php endif?>
+
+
 <br>
 <nav class="navbar navbar-light navbar-expand-lg">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
@@ -149,12 +159,12 @@
 
     <?php
 //controllare che utente, password e port siano corretti per il dispositivo corrente
-/*
+
 $dbconn = pg_connect( "host=localhost port=5432
 dbname=ent_factory user=ale password=basi2")
-*/
-$dbconn = pg_connect( "host=localhost port=5432
-dbname=ent_factory user=postgres password=c354497" )
+
+/*$dbconn = pg_connect( "host=localhost port=5432
+dbname=ent_factory user=postgres password=c354497" )*/
 or die ("Could not connect: " . pg_last_error());
 $query="SELECT * FROM ef_schema.prodotto ORDER BY codice";
 $result=pg_query ($query) or die("Query failed: " . pg_last_error());
@@ -171,19 +181,29 @@ foreach($line as $col_value){
     elseif($count==4){$foto=$col_value;}
     elseif($count==5){$quant_magazzino=$col_value;}
     $count+=1;}
-
-    echo "\t<div  class='col-4 mx-auto'>\n
+     //aggiunto
+    echo "\t<div  class='col-4 mx-auto' id='card_$count3'>\n
     <div class='card card-body mb-2'>\n
         <img class='card-img-top mx-auto' src=../img/$foto style='width: 200px;'>\n
         <div class='card-body'>\n
           <h5 class='card-title'>$nome</h5>\n
           <p class='card-text'>$prezzo euro</p>\n";
-          
+   
+    $url="/pagine/prodotti/all_prod_1.php?action=popup#card_".$count3;
+
     if($quant_magazzino>0){
-      echo "<a id='id$count3' href='#' onclick='show_popup($count3)' onclick='add($count3)' class='btn btn-primary'>Add to Cart</a>\n";
-      $prodcart[] =array($foto,$nome,'1',$prezzo,$prezzo);
-      $_SESSION['arraycart']=$prodcart;
-    }
+      
+     echo "<form method='POST' action='edit-cart.php'>
+     <input type='hidden' name='codice' value='$codice'>
+     <input type='hidden' name='nome' value='$nome'>
+     <input type='hidden' name='prezzo' value='$prezzo'>
+     <input type='hidden' name='foto' value='$foto'>
+     <input type='hidden' name='url' value='$url'>
+      <button type='submit' name='addToCart' class='btn btn-primary' id='id$count3'>Add to Cart</button>  
+     </form>";
+     
+    
+    }//aggiunto
     else{ echo "<p class='card-text'><i style='color: red;'>Sorry, Item Out of Stock</i></p>";}
     echo"</div>\n
     </div>\n
@@ -300,9 +320,10 @@ for any reason, without notice, at any time.</li>
     <img src="cart.png" style="width:30px" hspace="3"></div>
 
 <script>
-function show_popup(xd) {
+function show_popup() {
   var x = document.getElementById("snackbar");
   x.className = "show";
+  setTimeout(function(){ "ciao"; }, 3000);
   setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
 }
 </script>

@@ -17,7 +17,11 @@
 <link rel="manifest" href="../fav/site.webmanifest">
 <link  rel="stylesheet" href="../../fontawesome-free-5.13.0-web/css/all.css">
 <link  rel="stylesheet" href="custom_prod.css"/>
+<?php if(isset($_GET['action'])):?>
+<body class="text-center" onload="show_popup()">
+<?php else:?>
 <body class="text-center">
+<?php endif?>
 <br>
 <nav class="navbar navbar-light navbar-expand-lg">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
@@ -166,15 +170,29 @@ foreach($line as $col_value){
     elseif($count==4){$foto=$col_value;}
     elseif($count==5){$quant_magazzino=$col_value;}
     $count+=1;}
-    echo "\t<div class='col-4 mx-auto'>\n
-    <div class='card card-body mb-2'>\n
-        <img class='card-img-top mx-auto' src=../img/$foto style='width: 200px;'>\n
-        <div class='card-body'>\n
-          <h5 class='card-title'>$nome</h5>\n
-          <p class='card-text'>$prezzo euro</p>\n";
-    if($quant_magazzino>0){
-      echo "<a href='#' onclick='show_popup()' class='btn btn-primary'>Add to Cart</a>\n";
-    }
+       //aggiunto
+   echo "\t<div  class='col-4 mx-auto' id='card_$codice'>\n
+   <div class='card card-body mb-2'>\n
+       <img class='card-img-top mx-auto' src=../img/$foto style='width: 200px;'>\n
+       <div class='card-body'>\n
+         <h5 class='card-title'>$nome</h5>\n
+         <p class='card-text'>$prezzo euro</p>\n";
+  
+   $url="/pagine/prodotti/electronic.php?action=popup#card_".$codice;
+
+   if($quant_magazzino>0){
+     
+    echo "<form method='POST' action='edit-cart.php'>
+    <input type='hidden' name='codice' value='$codice'>
+    <input type='hidden' name='nome' value='$nome'>
+    <input type='hidden' name='prezzo' value='$prezzo'>
+    <input type='hidden' name='foto' value='$foto'>
+    <input type='hidden' name='url' value='$url'>
+     <button type='submit' name='addToCart' class='btn btn-primary' id='id$codice'>Add to Cart</button>  
+    </form>";
+    
+   
+   }//aggiunto
     else{ echo "<p class='card-text'><i style='color: red;'>Sorry, Item Out of Stock</i></p>";}
     echo"</div>\n
     </div>\n

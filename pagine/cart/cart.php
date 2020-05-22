@@ -115,40 +115,37 @@
   </tr>
   
   <?php
-  /* ALE
+  /* //ALE
   $dbconn = pg_connect( "host=localhost port=5432
   dbname=ent_factory user=ale password=basi2" )
   or die ("Could not connect: " . pg_last_error());
-  */
+  //*/
   
-  //SERGIO
+  /*//SERGIO
   $dbconn = pg_connect( "host=localhost port=5432
   dbname=ent_factory user=postgres password=c354497" )
   or die ("Could not connect: " . pg_last_error());
   //*/
-
-  $total=0;
+if((isset($_SESSION['arraycart'])) && (!empty($_SESSION['arraycart']))){
+  $total=$_SESSION['total'];
 
   $array=$_SESSION['arraycart'];
 
-  //$array[] = array($photo,$nome,$quantita,$prezzo,$itemprice);
-
+ 
   $n = count($array);
   for($i = 0; $i < $n; $i++){
-    $var0 = $array[$i][0];
     $var1 = $array[$i][1];
     $var2 = $array[$i][2];
     $var3 = $array[$i][3];
-    $total +=$var3;
     $var4 = $array[$i][4];
     ?>
     <div id="div<?php echo $i ?>">
     <tr id="tr<?php echo $i ?>">
     
-    <th id="th0<?php echo $i ?>"> <?php echo " <img src=../img/$var0 style='width: 200px;'>" ?> </th>
-    <th id="th1<?php echo $i ?>"> <?php echo " $var1 " ?> </th>
-    <th id="th2<?php echo $i ?>"> <?php echo " $var2 "  ?></th>
-    <th id="th3<?php echo $i ?>"> <?php echo " $var3 "  ?> <span class="fas fa-euro-sign "></span></th>
+    <th id="th0<?php echo $i ?>"> <?php echo " <img src=../img/$var2 style='width: 200px;'>"; ?> </th>
+    <th id="th1<?php echo $i ?>"> <?php echo " $var3 " ?> </th>
+    <th id="th2<?php echo $i ?>"> <?php echo " $var1 "  ?></th>
+    <th id="th3<?php echo $i ?>"> <?php echo $var1*$var4; ?> <span class="fas fa-euro-sign "></span></th>
     <th id="th4<?php echo $i ?>"> <?php echo " $var4 "  ?> <span class="fas fa-euro-sign"></span></th>
     <th id="trush<?php echo $i ?>"><button id="trushbotton<?php echo $i ?>" class="fas fa-trash-alt"></button></th>
     </tr>
@@ -169,35 +166,31 @@
   });
 </script>
     <?php
-  } 
+  } }
   
-  pg_free_result($result) ;
-  pg_close( $dbconn ) ;
+
   ?>
   </div>
   </table>
 
-  <script>
-  $(document).ready(function(){
-    $("#couponBtn").click(function(){
-      if($("#codeCou").val().toUpperCase()=='LTW2020'){
-      $("#tot_text").text("Total: 1 Euro");
-      $("#tot").val("1");
-      $("#couponBtn").hide();
-      $("#couhr").hide();
-      $("#codeCou").hide();
-      $("#couH4").hide();}
-    });
-  });
-  </script>
-  <br>
-  <p class="fas fa-shopping-cart"> Total: <?php echo " $total " ?> <span class="fas fa-euro-sign"></span></p>
   
+  <br><?php if(isset($_SESSION['arraycart'])&& (!empty($_SESSION['arraycart']))):?>
+  <p class="fas fa-shopping-cart"> Total: <?php echo $_SESSION['total']; ?> <span class="fas fa-euro-sign"></span></p>
+  <?php else:?>
+  <h2 style='color:red'>Cart is empty</h2>
+  <?php endif?>
   <br>
   <br>
   <div class="form-row">
-    <div class="form-group text-left col-md-6"> <a class="btn btn-primary -left" href="../prodotti/all_prod_1.php">Back to Shop</a></div>
-    <div class="form-group text-right col-md-6"> <a class="btn btn-primary" href="../payment/payment.php">Go to payment</a> </div>
+    <div class="form-group text-left col-md-6"> <a class="btn btn-outline-primary -left" href="../prodotti/all_prod_1.php">Back to Shop</a></div>
+    <?php if(!isset($_SESSION['arraycart']) or (empty($_SESSION['arraycart']))): ?>
+      <div class="form-group text-right col-md-6"> <button type="button" class="btn btn-primary" disabled>Go to payment</button> </div>
+    <?php elseif ($loggedin): ?>
+      <div class="form-group text-right col-md-6"> <a class="btn btn-primary" href="../payment/payment.php">Go to payment</a> </div>
+      <?php else: ?>
+        <div class="form-group text-right col-md-6"> <a class="btn btn-primary" href="../login/login.php?fut='g'">Go to payment</a> </div>
+      <?php endif ?>  
+    
   </div>
 
 </div>

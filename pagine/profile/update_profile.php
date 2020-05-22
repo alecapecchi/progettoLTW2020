@@ -3,6 +3,7 @@ if(!(isset($_POST['save_btn']))){
     
     header("Location:profile.php");
 }
+session_start();
 $username=$_POST['inputUsername'];
 $dbconn = pg_connect( "host=localhost port=5432 dbname=ent_factory user=ale password=basi2" ) or die ("Could not connect: " . pg_last_error()); 
 

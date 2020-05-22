@@ -61,7 +61,7 @@ if($responseKeys["success"]){
           }
 
             if (password_verify($_POST['password'], $pass)) {
-              session_regenerate_id();
+            session_regenerate_id();
             $_SESSION['loggedin'] = true;
             $_SESSION['name'] = $_POST['user'];
             $_SESSION['email'] = $email;
