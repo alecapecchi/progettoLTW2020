@@ -5,13 +5,8 @@
     $my_username=$_SESSION['name'];
     $loggedin=$_SESSION['loggedin'];
 
-  $my_total=45;
-  $cart = array (
-    array("a1",2),
-    array("e2",1),
-    array("l2",2)
-  
-  );}
+  $my_total=$_SESSION['total'];
+  $cart = $_SESSION['arraycart'];}
 	else{
 	  header("Location:../login/login.php");
 	}

@@ -36,6 +36,12 @@ if (isset($_GET["id"]) ){
 else{ header('Location: ../home/index.php');
 	exit;}
 
+
+$_SESSION['arraycart']=array();
+$_SESSION['total']=0;
+
+
+
 $to_email = $email;
 $subject = "Order Confirmation #".$order_num;
 $body = "Hi ".$my_username.",
