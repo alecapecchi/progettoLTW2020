@@ -30,6 +30,7 @@ function getremember(){
 
 }
 function validLogin(){
+    rememberme();
     if(grecaptcha && grecaptcha.getResponse().length > 0){
 
         return true;}
