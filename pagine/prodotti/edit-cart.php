@@ -1,6 +1,5 @@
 <?php
 if(!(isset($_POST['addToCart']))){
-    
     header("Location:all_prod_1.php");
 }
 session_start();

@@ -9,7 +9,7 @@
 
 <title>Login Entertainment Factory</title>
 <meta name="viewport" content="width=device−width, initial−scale=1"/>
-<link rel="stylesheet" href="./customlogin.css">
+<link  rel="stylesheet" href="../../fontawesome-free-5.13.0-web/css/all.css">
 <link rel="stylesheet" href="../../css/bootstrap.css"/>
 <link rel="stylesheet" href="../../css/bootstrap-grid.css"/>
 <link rel="apple-touch-icon" sizes="180x180" href="../fav/apple-touch-icon.png">
@@ -17,46 +17,45 @@
 <link rel="icon" type="image/png" sizes="16x16" href="../fav/favicon-16x16.png">
 <link rel="manifest" href="../fav/site.webmanifest">
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<link rel="stylesheet" href="./customlogin.css">
 
 
 <header>
 <nav class="navbar navbar-light navbar-expand-lg justify-content-center">
-  <ul class="navbar-nav">
-    
-    <li class="nav-item">
-      <a class="nav-link" href="../about/about.php">About</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="../playit/playit.php">Play It!</a>
-    </li>
-    
-    <li class="nav-item">
-      <a class="nav-link" ></a>
-    </li>
-    <a class="navbar-brand" href="../home/index.php">
-      <img src="../home/logo_new.png" alt="Logo" style="width:40px;">
-    </a>
-    <li class="nav-item dropdown">
-      <a class="nav-link dropdown-toggle" hidden href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Order
-    </a>
-    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-        <a class="dropdown-item" href="../prodotti/board.php">Board Games</a>
-        <a class="dropdown-item" href="../prodotti/wt.php">Wooden Toys</a>
-        <a class="dropdown-item" href="../prodotti/at.php">Action</a>
-        <a class="dropdown-item" href="../prodotti/dolls.php">Dolls</a>
-        <a class="dropdown-item" href="../prodotti/electronic.php">Electronic Toys</a>
-      </div>
-    </li>
-
-    <li class="nav-item">
-      <div>
-      <a class="nav-link" href="../cart/cart.php">Cart</a>
-
-    </div>
-    </li>
-  </ul>
-</nav>
+      <ul class="navbar-nav">
+        
+        <li class="nav-item">
+          <a class="nav-link" href="../about/about.php">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../playit/playit.php">Play It!</a>
+        </li>
+        
+        <li class="nav-item">
+          <a class="nav-link" ></a>
+        </li>
+        <a class="navbar-brand" href="../home/index.php">
+          <img src="../signup/logo_new.png" alt="Logo" style="width:40px;">
+        </a>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Order
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="../prodotti/board.php">Board Games</a>
+          <a class="dropdown-item" href="../prodotti/wt.php">Wooden Toys</a>
+          <a class="dropdown-item" href="../prodotti/at.php">Action</a>
+          <a class="dropdown-item" href="../prodotti/dolls.php">Dolls</a>
+          <a class="dropdown-item" href="../prodotti/electronic.php">Electronic Toys</a>
+        </div>
+        </li>
+  
+        <li class="nav-item">
+      <a class="nav-link" href="../cart/cart.php">Cart
+      <span class="fas fa-shopping-cart"></span></a>
+        </li>
+      </ul>
+    </nav>
 </header>
 <body>
   <div class="mycontainer">
@@ -71,7 +70,7 @@
       <input class="form-control border_form" type="password"id="password" name="password" placeholder="password" required>
     </div>
     <div class="form-group form-check text-left">
-    <input class="form-check-input" onclick="return rememberme()" type="checkbox" name="checkbox">
+    <input class="form-check-input" onclick="return rememberme()" type="checkbox" id="rem" name="checkbox">
     <label class="form-check-label" for="checkbox" >Remember me</label><br>
     </div>
     <div class="g-recaptcha mx-auto" data-sitekey="6LeKK_cUAAAAAG-E5cxzPwyNePI55kHC-E7voSM8" ></div> 

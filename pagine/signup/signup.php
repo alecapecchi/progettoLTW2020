@@ -13,6 +13,7 @@
 <meta name="viewport" content="width-device-width, initial−scale=1"/>
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet"/>
 <link rel="stylesheet" href="customsignup.css"/>
+<link  rel="stylesheet" href="../../fontawesome-free-5.13.0-web/css/all.css">
 <link rel="apple-touch-icon" sizes="180x180" href="../fav/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="../fav/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="../fav/favicon-16x16.png">
@@ -50,7 +51,8 @@
         </li>
   
         <li class="nav-item">
-          <a class="nav-link" href="#">Cart</a>
+      <a class="nav-link" href="../cart/cart.php">Cart
+      <span class="fas fa-shopping-cart"></span></a>
         </li>
       </ul>
     </nav>

@@ -7,8 +7,8 @@
 <!DOCTYPE html>
 <html>
 
-<title>Login Entertainment Factory</title>
-<meta name="login" content="width-device−width, initial−scale=1"/>
+<title>The Entertainment Factory - About</title>
+<meta name="about" content="width-device−width, initial−scale=1"/>
 <link rel="apple-touch-icon" sizes="180x180" href="../fav/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="../fav/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="../fav/favicon-16x16.png">
@@ -100,13 +100,14 @@
 <div class="jumbotron jumbotron-fluid">
   <div class="container">
     <h1 class="display-4">What We Do</h1>
-    <p class="lead">We are a young company specialized in entertainment, offering unbeatable prices on all our products (
+    <p class="lead">We are a young company specialized in entertainment. We offer unbeatable 
+    prices on all our products (
       <a class="lead" href="../prodotti/board.php">Board Games</a>,
       <a class="lead" href="../prodotti/wt.php"> Wooden Toys</a>,
       <a class="lead" href="../prodotti/at.php">Action</a>,
       <a class="lead" href="../prodotti/dolls.php">Dolls</a>,
       <a class="lead" href="../prodotti/electronic.php">Electronic Toys</a>
-      ) and get incredible discounts while enjoying our 
+      ) and with the possibility of incredible discounts, when you play our 
       <a class="lead" href="../playit/playit.php"> game</a>.
 
     </p>
@@ -117,12 +118,14 @@
   <div class="pt-4 row row-cols-1 row-cols-md-2">
     <div class="col mb-6">
         <div class="card">
-          <img src="../prodotti/example.svg" class="card-img-top" alt="person">
+          <img src="photo.jpg" class="card-img-top" alt="person">
           <div class="card-body">
-            <h5 class="card-title">Alessandra</h5>
-            <p class="card-text">text about ale</p>
-            <div class="col mb-2"><a href="#" class="fab fa-instagram-square icon text-center"> Instagram</a> </div>
-            <div class="col mb-2"><a href="#" class="fab fa-facebook-square"> Facebook</a></div>
+            <h5 class="card-title">Alessandra Capecchi</h5>
+            <p class="card-text">I'm</p>
+            <div class="col mb-2"><i class="fab fa-instagram" style="color:rgb(0, 140, 255);"></i>
+            <a href="https://www.instagram.com/ale.capecchi/" class="text-center"> Instagram</a> </div>
+            <div class="col mb-2"> <i class="fab fa-linkedin-in" style="color:rgb(0, 140, 255);"></i>
+            <a href="https://www.linkedin.com/in/alessandra-capecchi" class="text-center"> Linkedin</a></div>
           </div>
         </div>
       </div>

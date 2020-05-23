@@ -4,15 +4,10 @@
     if (isset($_SESSION['loggedin'])) {
     $my_username=$_SESSION['name'];
     $loggedin=$_SESSION['loggedin'];
-    $my_email=$_SESSION['email'];
+    $email=$_SESSION['email'];
   }
   ?>
-<?php 
-    //valori login da cambiare
-    $my_username='mp';
-    $loggedin=true;
-    $email="alessandra.a.capecchi@gmail.com";
-    ?>
+
 <!DOCTYPE html>
 <html>
 <head>
