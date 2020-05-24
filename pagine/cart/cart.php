@@ -134,10 +134,11 @@ if((isset($_SESSION['arraycart'])) && (!empty($_SESSION['arraycart']))){
  
   $n = count($array);
   for($i = 0; $i < $n; $i++){
-    $var1 = $array[$i][1];
-    $var2 = $array[$i][2];
-    $var3 = $array[$i][3];
-    $var4 = $array[$i][4];
+    $codice = $array[$i][0]; 
+    $var1 = $array[$i][1]; //quantity
+    $var2 = $array[$i][2]; //foto
+    $var3 = $array[$i][3]; //nome
+    $var4 = $array[$i][4]; //prezzoitem
     ?>
     <div id="div<?php echo $i ?>">
     <tr id="tr<?php echo $i ?>">
@@ -147,9 +148,24 @@ if((isset($_SESSION['arraycart'])) && (!empty($_SESSION['arraycart']))){
     <th id="th2<?php echo $i ?>"> <?php echo " $var1 "  ?></th>
     <th id="th3<?php echo $i ?>"> <?php echo $var1*$var4; ?> <span class="fas fa-euro-sign "></span></th>
     <th id="th4<?php echo $i ?>"> <?php echo " $var4 "  ?> <span class="fas fa-euro-sign"></span></th>
-    <th id="trush<?php echo $i ?>"><button id="trushbotton<?php echo $i ?>" class="fas fa-trash-alt"></button></th>
+    <th id="trush<?php echo $i ?>">
+    <?php
+    $p = $var1*$var4;
+    $url="/pagine/cart/cart.php";
+     echo "<form method='POST' action='removetocart.php'>
+     <input type='hidden' name='codice' value='$codice'>
+     <input type='hidden' name='quantity' value='$var1'>
+     <input type='hidden' name='nome' value='$var3'>
+     <input type='hidden' name='prezzo' value='$var4'>
+     <input type='hidden' name='foto' value='$var2'>
+     <input type='hidden' name='url' value='$url'>
+    <button type='submit' name='removetoCart' class='btn btn-primary fas fa-trash-alt' id='trushbotton$i'></button>  
+     </form>";
+
+    ?>
+    </th>
     </tr>
-    
+
     <script>
   $(document).ready(function(){
     $("#trushbotton<?php echo $i ?>").click(function(){
