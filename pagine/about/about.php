@@ -93,7 +93,7 @@
     </div>
   </nav>
 
-<img class="cover" src="../home/cover.jpg" width="width-device−width">
+<!--<img class="cover" src="../home/cover.jpg" width="width-device−width">-->
 
 <br>
 <br>
@@ -121,7 +121,10 @@
           <img src="photo.jpg" class="card-img-top" alt="person">
           <div class="card-body">
             <h5 class="card-title">Alessandra Capecchi</h5>
-            <p class="card-text">I'm</p>
+            <p class="card-text">I'm a 20 year old from Rome, Italy.<br> I love to travel and to discover 
+              new things. I'm currently 
+              finishing my bachelor's degree in Computer Science at La Sapienza University of Rome.
+            </p>
             <div class="col mb-2"><i class="fab fa-instagram" style="color:rgb(0, 140, 255);"></i>
             <a href="https://www.instagram.com/ale.capecchi/" class="text-center"> Instagram</a> </div>
             <div class="col mb-2"> <i class="fab fa-linkedin-in" style="color:rgb(0, 140, 255);"></i>

@@ -13,9 +13,9 @@ table {
     padding: 8px;
   }
   hr.orange {
-    border: 7px solid orange;
-    border-right : 40%;
-    border-left: 40%;
+    border: 7px solid rgb(206, 165, 29);
+    width:72%;
+    text-align:center;
 
   }
 
