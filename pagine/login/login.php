@@ -70,7 +70,7 @@
       <input class="form-control border_form" type="password"id="password" name="password" placeholder="password" required>
     </div>
     <div class="form-group form-check text-left">
-    <input class="form-check-input" onclick="return rememberme()" type="checkbox" id="rem" name="checkbox">
+    <input class="form-check-input"  type="checkbox" id="rem" name="checkbox">
     <label class="form-check-label" for="checkbox" >Remember me</label><br>
     </div>
     <div class="g-recaptcha mx-auto" data-sitekey="6LeKK_cUAAAAAG-E5cxzPwyNePI55kHC-E7voSM8" ></div> 

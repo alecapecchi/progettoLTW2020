@@ -92,10 +92,10 @@ if(isset($_POST['sToken'])){
       $query2="insert into ef_schema.ordine_prodotto values ( $1 , $2, $3) ";
       $data2=pg_query_params($dbconn, $query2, array($elementg , $codice_ord,  $qty))or die ("Proby: " . pg_last_error());
        
-      
-    }
-     $query3="UPDATE ef_schema.prodotto SET quantita_mag=quantita_mag-1 WHERE codice=$1";
+      $query3="UPDATE ef_schema.prodotto SET quantita_mag=quantita_mag-$qty WHERE codice=$1";
      $result3=pg_query_params($dbconn, $query3, array($elementg));
+    }
+     
      
     }
       
@@ -246,7 +246,6 @@ if(isset($_POST['sToken'])){
     <div class="form-row">
     <div class="form-group col-md-2 text-left">
         <label for="name">Exp Month: </label>
-       <!-- <input type="text" class="form-control border_form" name="inputVal"  id="val" required placeholder="MM-YY"/>-->
        <select name="month" id="month" class="form-control border_form" data-stripe="exp_month">
 									<option value="01">01</option>
 									<option value="02">02</option>
@@ -416,8 +415,9 @@ $(document).ready(function(){
 </script>
 
 <script type="text/javascript">
+//prende la key pubblica
 	Stripe.setPublishableKey('<?php print $publishable_key; ?>');
-  
+//fa creare a stripe un token
 	$(function() {
 	  var $form = $('#pf');
 	  $form.submit(function(event) {
@@ -427,7 +427,7 @@ $(document).ready(function(){
 		return false;
 	  });
 	});
-
+//controlla che non ci siano stati errori
 	function validateResponse(status, response) {
 	  
 	  var $myform = $('#pf');
