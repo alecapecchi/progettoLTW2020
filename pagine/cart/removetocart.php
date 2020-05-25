@@ -27,6 +27,7 @@ if((isset($_SESSION['arraycart'])) && (!empty($_SESSION['arraycart']))){
                 if($element[1]==0){
                 $prodotto=array($codice,0,$foto,$nome, $prezzo);
                 unset($_SESSION['arraycart'][$count2]);
+                $_SESSION['arraycart'] = array_values($_SESSION['arraycart']);
                 }
             }
             $count2+=1;
@@ -47,6 +48,13 @@ if(isset($_POST['url'])) {
      }
    else {
     $url = "/pagine/home/index.php"; }
-    header("Location:http://localhost:3000$url");
+    //header("Location:http://localhost:3000$url");
+    ?>
 
-?>
+
+<html>
+<body onload=window.close()>
+
+
+   </body>
+</html>

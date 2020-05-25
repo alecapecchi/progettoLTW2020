@@ -4,7 +4,11 @@
     if (isset($_SESSION['loggedin'])) {
     $my_username=$_SESSION['name'];
     $loggedin=$_SESSION['loggedin'];}
-    $_SESSION['url'] = $_SERVER['REQUEST_URI'];?>
+    $_SESSION['url'] = $_SERVER['REQUEST_URI'];
+    
+    
+
+?>
 <!DOCTYPE html>
 <html>
 <title>The Entertainment Factory</title>
@@ -128,6 +132,7 @@
   //*/
 if((isset($_SESSION['arraycart'])) && (!empty($_SESSION['arraycart']))){
   $total=$_SESSION['total'];
+  echo "<script>total=$total</script>";
 
   $array=$_SESSION['arraycart'];
 
@@ -144,19 +149,19 @@ if((isset($_SESSION['arraycart'])) && (!empty($_SESSION['arraycart']))){
     <tr id="tr<?php echo $i ?>">
     
     <th id="th0<?php echo $i ?>"> <?php echo " <img src=../img/$var2 style='width: 200px;'>"; ?> </th>
-    <th id="th1<?php echo $i ?>"> <?php echo " $var3 " ?> </th>
-    <th id="th2<?php echo $i ?>"> <?php echo " $var1 "  ?></th>
+    <th id="th1<?php echo $i ?>"> <?php echo " $var3 " ;?> </th>
+    <th id="th2<?php echo $i ?>"> <?php echo  $var1; ?></th>
     <th id="th3<?php echo $i ?>"> <?php echo $var1*$var4; ?> <span class="fas fa-euro-sign "></span></th>
-    <th id="th4<?php echo $i ?>"> <?php echo " $var4 "  ?> <span class="fas fa-euro-sign"></span></th>
+    <th id="th4<?php echo $i ?>"> <?php echo " $var4 " ; ?> <span class="fas fa-euro-sign"></span></th>
     <th id="trush<?php echo $i ?>">
     <?php
     $p = $var1*$var4;
     $url="/pagine/cart/cart.php";
-     echo "<form method='POST' action='removetocart.php'>
+     echo "<form method='POST' target='_blank'action='removetocart.php'>
      <input type='hidden' name='codice' value='$codice'>
-     <input type='hidden' name='quantity' value='$var1'>
+     <input type='hidden' name='quantity' id='qtyVal$i' value='$var1'>
      <input type='hidden' name='nome' value='$var3'>
-     <input type='hidden' name='prezzo' value='$var4'>
+     <input type='hidden' name='prezzo' id='prcVal$i' value='$var4'>
      <input type='hidden' name='foto' value='$var2'>
      <input type='hidden' name='url' value='$url'>
     <button type='submit' name='removetoCart' class='btn btn-primary fas fa-trash-alt' id='trushbotton$i'></button>  
@@ -169,6 +174,17 @@ if((isset($_SESSION['arraycart'])) && (!empty($_SESSION['arraycart']))){
     <script>
   $(document).ready(function(){
     $("#trushbotton<?php echo $i ?>").click(function(){
+      if($("#qtyVal<?php echo $i ?>").val()>1){
+        new_qty=$("#qtyVal<?php echo $i ?>").val()-1;
+        $("#qtyVal<?php echo $i ?>").val(new_qty);//nuovo qty value
+        $("#th2<?php echo $i ?>").html(new_qty);//nuovo qty text
+        new_price=new_qty*$("#prcVal<?php echo $i ?>").val();
+        $("#th3<?php echo $i ?>").html(new_price +" <span class='fas fa-euro-sign'>");//nuovo prezzo prodotto singolo text
+        new_total=total-$("#prcVal<?php echo $i ?>").val();
+        $("#totalPrc").html(" Total: "+new_total+" <span class='fas fa-euro-sign'></span>");
+
+      }
+      else{
       $("#th0<?php echo $i ?>").hide();
       $("#th1<?php echo $i ?>").hide();
       $("#th2<?php echo $i ?>").hide();
@@ -176,7 +192,7 @@ if((isset($_SESSION['arraycart'])) && (!empty($_SESSION['arraycart']))){
       $("#th4<?php echo $i ?>").hide();
       $("#trushbotton<?php echo $i ?>").hide();
       $("#tr<?php echo $i ?>").hide();
-      $("#div<?php echo $i ?>").remove();
+      $("#div<?php echo $i ?>").remove();}
             
     });
   });
@@ -191,7 +207,8 @@ if((isset($_SESSION['arraycart'])) && (!empty($_SESSION['arraycart']))){
 
   
   <br><?php if(isset($_SESSION['arraycart'])&& (!empty($_SESSION['arraycart']))):?>
-  <p class="fas fa-shopping-cart"> Total: <?php echo $_SESSION['total']; ?> <span class="fas fa-euro-sign"></span></p>
+  <p class="fas fa-shopping-cart" value="<?php echo $_SESSION['total']; ?>" 
+  id="totalPrc"> Total: <?php echo $_SESSION['total']; ?> <span class="fas fa-euro-sign"></span></p>
   <?php else:?>
   <h2 style='color:red'>Cart is empty</h2>
   <?php endif?>
