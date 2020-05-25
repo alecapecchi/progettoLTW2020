@@ -181,6 +181,7 @@ if((isset($_SESSION['arraycart'])) && (!empty($_SESSION['arraycart']))){
         new_price=new_qty*$("#prcVal<?php echo $i ?>").val();
         $("#th3<?php echo $i ?>").html(new_price +" <span class='fas fa-euro-sign'>");//nuovo prezzo prodotto singolo text
         new_total=total-$("#prcVal<?php echo $i ?>").val();
+        total=new_total;
         $("#totalPrc").html(" Total: "+new_total+" <span class='fas fa-euro-sign'></span>");
 
       }
