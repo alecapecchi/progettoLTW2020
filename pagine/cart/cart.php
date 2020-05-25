@@ -186,6 +186,13 @@ if((isset($_SESSION['arraycart'])) && (!empty($_SESSION['arraycart']))){
 
       }
       else{
+      new_total=total-$("#prcVal<?php echo $i ?>").val();
+      total=new_total;
+      if(total<=0){
+        $("#emCar").show();
+        $("#totF").hide();
+      }
+      $("#totalPrc").html(" Total: "+new_total+" <span class='fas fa-euro-sign'></span>");
       $("#th0<?php echo $i ?>").hide();
       $("#th1<?php echo $i ?>").hide();
       $("#th2<?php echo $i ?>").hide();
@@ -208,7 +215,8 @@ if((isset($_SESSION['arraycart'])) && (!empty($_SESSION['arraycart']))){
 
   
   <br><?php if(isset($_SESSION['arraycart'])&& (!empty($_SESSION['arraycart']))):?>
-  <p class="fas fa-shopping-cart" value="<?php echo $_SESSION['total']; ?>" 
+  <h2 style='color:red;display:none' id='emCar'>Cart is empty</h2>  
+  <p class="fas fa-shopping-cart" id='totF'value="<?php echo $_SESSION['total']; ?>" 
   id="totalPrc"> Total: <?php echo $_SESSION['total']; ?> <span class="fas fa-euro-sign"></span></p>
   <?php else:?>
   <h2 style='color:red'>Cart is empty</h2>
