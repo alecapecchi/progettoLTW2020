@@ -1,4 +1,5 @@
 <?php 
+    //valori della sessione
     $loggedin=false;
     session_start();
     if (isset($_SESSION['loggedin'])) {
@@ -23,25 +24,29 @@
 
 <body class="text-center">
 <br>
+<!--navbar-->
 <nav class="navbar navbar-light navbar-expand-lg">
+<!--bottone in cui navbar collassa nei dispositivi con uno schermo piccolo-->
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
             <span class="navbar-toggler-icon"></span>
         </button>
     <div class="navbar-collapse collapse w-100 order-1 order-md-1 dual-collapse2">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="" hidden style="color:white;">LeftLeftLeftLeftLeft</a>
+                <a class="nav-link" hidden style="color:white;"></a>
             </li>
             
         </ul>
     </div>
     <div class="navbar-collapse collapse w-100 order-0 order-md-1 dual-collapse2">
       <ul class="navbar-nav mx-auto">
-
+    <!--link alle pagine principali-->
     <li class="nav-item">
+    <!--pagina di about-->
       <a class="nav-link" href="about.php">About</a>
     </li>
     <li class="nav-item">
+      <!--pagina del concorso play it!-->
       <a class="nav-link" href="../playit/playit.php">Play It!</a>
     </li>
 
@@ -49,12 +54,14 @@
       <a class="nav-link" ></a>
     </li>
     <a class="navbar-brand" href="../home/index.php">
+    <!--logo con link all'homepage-->
       <img src="../home/logo_new.png" alt="Logo" style="width:40px;">
     </a>
     <li class="nav-item dropdown">
       <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         Order
       </a>
+      <!--pagine dei prodotti-->
       <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
         <a class="dropdown-item" href="../prodotti/board.php">Board Games</a>
         <a class="dropdown-item" href="../prodotti/wt.php">Wooden Toys</a>
@@ -65,6 +72,7 @@
     </li>
 
     <li class="nav-item">
+    <!--pagina del carrello-->
       <a class="nav-link" href="../cart/cart.php">Cart
       <span class="fas fa-shopping-cart"></span>
     </a>
@@ -73,6 +81,7 @@
   </div>
     <div class="navbar-collapse collapse w-100 order-2 dual-collapse2">
         <ul class="navbar-nav ml-auto">
+        <!--se l'utente è loggato viene mostrato il link al profilo e il logout-->
         <?php if ($loggedin): ?>
             <li class="nav-item">
             <a class="nav-link" href="../profile/profile.php"><?php echo 'Welcome, ' . $my_username . '!';?></a>
@@ -80,6 +89,7 @@
             <li class="nav-item">
                 <a class="nav-link" href="../login/logout.php"><u>Logout</u></a>
             </li>
+        <!--altrimenti i link alle pagine di login e signup-->
         <?php else: ?>
             <li class="nav-item">
                 <a class="nav-link" href="../login/login.php"><u>Login</u></a>
@@ -93,10 +103,10 @@
     </div>
   </nav>
 
-<!--<img class="cover" src="../home/cover.jpg" width="width-device−width">-->
 
 <br>
 <br>
+<!--jumbotron descrittivo-->
 <div class="jumbotron jumbotron-fluid">
   <div class="container">
     <h1 class="display-4">What We Do</h1>
@@ -114,6 +124,7 @@
   </div>
 </div>
 
+<!--container con card di descrizione degli autori-->
 <div class="container">
   <div class="pt-4 row row-cols-1 row-cols-md-2">
     <div class="col mb-6">
@@ -140,16 +151,21 @@
             <p class="card-text">I'm 24 years old. I was born in Spain (Cádiz) and I study computer engineering. <br>
             I study computer science because I love learning about new technologies and being part of their advancement.
             </p>
-            <div class="col mb-2"><a href="https://www.instagram.com/sergiotorrejon12/" class="fab fa-instagram-square"> Instagram</a> </div>
-            <div class="col mb-2"><a href="https://www.facebook.com/sergio.torrejonespada" class="fab fa-facebook-square"> Facebook</a></div>
+            <div class="col mb-2"><i class="fab fa-instagram" style="color:rgb(0, 140, 255);"></i>
+            <a href="https://www.instagram.com/sergiotorrejon12/" class="text-center"> Instagram</a> </div>
+            <div class="col mb-2"><i class="fab fa-facebook" style="color:rgb(0, 140, 255);"></i>
+            <a href="https://www.facebook.com/sergio.torrejonespada" class="text-center"> Facebook</a> </div>
           </div>
         </div>
       </div>
     </div>
   </div>
 </div>
+
+
 <br>
 <br>
+<!--footer-->
 <footer id="sticky-footer" class="py-4 bg-dark text-white-50 text-left">
   <div class="container text-center">
     <p>Copyright: &copy; 2020 <a href="../home/index.php">The Entertainment Factory Inc.</a> -
@@ -161,7 +177,7 @@
 
 
 
-
+<!--modal dei termini e condizioni-->
 <div class="modal fade" id="modal_terms" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -209,6 +225,7 @@ for any reason, without notice, at any time.</li>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        <!--al click chiudi il modal-->
       </div>
     </div>
   </div>

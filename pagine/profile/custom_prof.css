@@ -53,3 +53,10 @@ table {
   height: 400px;
   overflow-y: auto;
 }
+
+
+.navbar a{
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif!important;
+  font-size: larger;
+  color: (255,0,0,.5)!important;
+}

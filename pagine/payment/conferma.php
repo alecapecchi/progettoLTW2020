@@ -40,7 +40,7 @@ $_SESSION['total']=0;
 $to_email = $email;
 $subject = "Order Confirmation #".$order_num;
 $body = "Hi ".$my_username.",
-Your order #".$order_num." has been placed.
+Your order (order #".$order_num.") has been placed.
 Did you know that you may check all your orders by visiting your profile page?
 Thank you for shopping with us,
 The Entertainment Factory Inc. Team.
