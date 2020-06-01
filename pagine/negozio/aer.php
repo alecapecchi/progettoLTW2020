@@ -4,7 +4,7 @@ if(!(isset($_POST['ae_btn'])) and !(isset($_POST['r_btn']))){
     header("Location:catalogue.php");
 }
 $prod_code=$_POST['inputCode'];
-$dbconn = pg_connect( "host=localhost port=5432 dbname=ent_factory user=ale password=basi2" ) or die ("Could not connect: " . pg_last_error()); 
+$dbconn = pg_connect( "host=localhost port=5432 dbname=ent_factory user=ale password=insert_passwordA" ) or die ("Could not connect: " . pg_last_error());
 $query1="SELECT * FROM ef_schema.prodotto WHERE codice=$1";
 $result=pg_query_params($dbconn, $query1, array($prod_code));
 $num_rows = pg_num_rows($result);

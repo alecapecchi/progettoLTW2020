@@ -121,13 +121,13 @@
   <?php
   /* //ALE
   $dbconn = pg_connect( "host=localhost port=5432
-  dbname=ent_factory user=ale password=basi2" )
+  dbname=ent_factory user=ale password=insert_passwordA" )
   or die ("Could not connect: " . pg_last_error());
   //*/
   
   /*//SERGIO
   $dbconn = pg_connect( "host=localhost port=5432
-  dbname=ent_factory user=postgres password=c354497" )
+  dbname=ent_factory user=postgres password=insert_passwordS" )
   or die ("Could not connect: " . pg_last_error());
   //*/
 if((isset($_SESSION['arraycart'])) && (!empty($_SESSION['arraycart']))){

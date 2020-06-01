@@ -5,7 +5,7 @@ if(!(isset($_POST['save_btn']))){
 }
 session_start();
 $username=$_POST['inputUsername'];
-$dbconn = pg_connect( "host=localhost port=5432 dbname=ent_factory user=ale password=basi2" ) or die ("Could not connect: " . pg_last_error()); 
+$dbconn = pg_connect( "host=localhost port=5432 dbname=ent_factory user=ale password=insert_passwordA" ) or die ("Could not connect: " . pg_last_error());
 
     
     $nome=$_POST['inputName'];

@@ -7,7 +7,7 @@ else{
 session_start();
 $new_score=$_GET['score'];
 
-$dbconn = pg_connect( "host=localhost port=5432 dbname=ent_factory user=ale password=basi2" ) or die ("Could not connect: " . pg_last_error()); 
+$dbconn = pg_connect( "host=localhost port=5432 dbname=ent_factory user=ale password=insert_passwordA" ) or die ("Could not connect: " . pg_last_error());
 $username=$_SESSION['name'];
 
     

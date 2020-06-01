@@ -154,7 +154,7 @@
     <?php
 //controllare che utente, password e port siano corretti per il dispositivo corrente
 $dbconn = pg_connect( "host=localhost port=5432
-dbname=ent_factory user=ale password=basi2" )
+dbname=ent_factory user=ale password=insert_passwordA" )
 or die ("Could not connect: " . pg_last_error());
 $query="SELECT * FROM ef_schema.prodotto WHERE categoria='Legno' ORDER BY codice";
 $result=pg_query ($query) or die("Query failed: " . pg_last_error());

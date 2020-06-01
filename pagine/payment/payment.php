@@ -56,13 +56,13 @@ if(isset($_POST['sToken'])){
 	$nazione=$_POST['inputNation'];
 		// ALE
     $dbconn = pg_connect( "host=localhost port=5432
-    dbname=ent_factory user=ale password=basi2" )
+    dbname=ent_factory user=ale password=insert_passwordA" )
     or die ("Could not connect: " . pg_last_error());
     
     
     /*SERGIO
     $dbconn = pg_connect( "host=localhost port=5433
-    dbname=ent_factory user=postgres password=c354497" )
+    dbname=ent_factory user=postgres password=insert_passwordS" )
     or die ("Could not connect: " . pg_last_error());*/
 		$query="insert into ef_schema.ordine(corrente, indirizzo, citta, cap, nazione) values ( $1 , $2 , $3 , $4 , $5) ";
     $data=pg_query_params($dbconn, $query, array($corrente, $indirizzo , $citta , $cap, $nazione))or die ("Prob: " . pg_last_error());

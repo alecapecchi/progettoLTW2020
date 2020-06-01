@@ -34,7 +34,7 @@ $firstName="";
 if($responseKeys["success"]){
     session_start();
     $username=$_POST['user'];
-    $dbconn = pg_connect( "host=localhost port=5432 dbname=ent_factory user=ale password=basi2" ) or die ("Could not connect: " . pg_last_error()); 
+    $dbconn = pg_connect( "host=localhost port=5432 dbname=ent_factory user=ale password=insert_passwordA" ) or die ("Could not connect: " . pg_last_error());
     $query1="SELECT *from ef_schema.cliente where username=$1";
     $result=pg_query_params($dbconn, $query1, array($username));
     $num_rows = pg_num_rows($result);

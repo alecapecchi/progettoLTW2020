@@ -5,7 +5,7 @@
     $my_username=$_SESSION['name'];
     $loggedin=$_SESSION['loggedin'];
 
-    $dbconn = pg_connect( "host=localhost port=5432 dbname=ent_factory user=ale password=basi2" ) or die ("Could not connect: " . pg_last_error()); 
+    $dbconn = pg_connect( "host=localhost port=5432 dbname=ent_factory user=ale password=insert_passwordA" ) or die ("Could not connect: " . pg_last_error());
     $q = "SELECT * FROM ef_schema.cliente WHERE username='$my_username'";
     $result = pg_query($q);
     $row = pg_fetch_assoc($result);
