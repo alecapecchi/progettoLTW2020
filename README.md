@@ -1,16 +1,16 @@
 # Progetto LTW 2020
 Progetto del corso Linguaggi e Tecnologie per il Web del anno accademico 2019/2020 tenuto dal professor Riccardo Rosati presso il Dipartimento di Ingegneria informatica, automatica e gestionale de La Sapienza Università di Roma.
 
-Questo è il sito web di un negozio fittizio ("the Entertainment Factory"), che effettua consegne online internazionali.
+Questo è il sito web di un negozio fittizio ("the Entertainment Factory"), che effettua consegne online internazionali.<br>
 
-Sono presenti le seguenti pagine:
+Sono presenti le seguenti pagine:<br>
 
--Homepage(pagine/home/home.php)
--About(pagine/about/about.php)
--Pagine dei prodotti(pagine/prodotti/)
--Carrello (pagine/cart/cart.php)
--Pagamento (pagine/payment/payment.php)
--Conferma di pagamento (pagine/payment/conferma.php)
+-Homepage(pagine/home/home.php)<br>
+-About(pagine/about/about.php)<br>
+-Pagine dei prodotti(pagine/prodotti/)<br>
+-Carrello (pagine/cart/cart.php)<br>
+-Pagamento (pagine/payment/payment.php)<br>
+-Conferma di pagamento (pagine/payment/conferma.php)<br>
 
 -Login(pagine/login/login.php)
 -Signup(pagine/signup/)
