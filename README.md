@@ -1,4 +1,5 @@
 # Progetto LTW 2020
+<b>ITA</b> <br>
 Progetto del corso Linguaggi e Tecnologie per il Web del anno accademico 2019/2020 tenuto dal professor Riccardo Rosati presso il Dipartimento di Ingegneria informatica, automatica e gestionale de La Sapienza Università di Roma.
 
 Questo è il sito web di un negozio fittizio ("the Entertainment Factory"), che effettua consegne online internazionali.<br>
@@ -27,7 +28,7 @@ Dashboard del negozio(pagine/negozio):
 
 In ogni directory troviamo ulteriori script php e javascript e fogli di stile css, non elencati qui, per ampliare le funzionalità del progetto e migliorare l'estetica del sito e l'interazione con gli utenti.
 
-ENG
+<b>ENG</b>
 
 This is a mock website for a non existing shop ("the Entertainment Factory"), created as the final project for the course of "Linguaggi e Tecnologie per il Web" at La Sapienza Università di Roma.
 
