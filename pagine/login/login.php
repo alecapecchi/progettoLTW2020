@@ -1,6 +1,7 @@
 <?php
+  //pagina di login
     session_start();
-    if (isset($_SESSION['loggedin'])) {
+    if (isset($_SESSION['loggedin'])) {//se loggato redirect all'homepage
     header("Location:../home/index.php");
   }
   ?>
@@ -21,9 +22,10 @@
 
 
 <header>
+<!--navbar-->
 <nav class="navbar navbar-light navbar-expand-lg justify-content-center">
       <ul class="navbar-nav">
-        
+        <!--link alle pagine principali-->
         <li class="nav-item">
           <a class="nav-link" href="../about/about.php">About</a>
         </li>
@@ -58,12 +60,12 @@
     </nav>
 </header>
 <body>
-  <div class="mycontainer">
+  <div class="mycontainer"><!--container del form-->
     <img class="cover" src="./cover_nologo.png" width="width-device−width">
     <div class="signup-form">
     <form method="POST" class="register-form form-submit" action="valida_login.php"name="login" onsubmit="return validLogin()">
     <h2 class="font-weight-light pb-4">Sign in</h2>
-    <div class="form-group">
+    <div class="form-group"><!--form di login-->
       <input class="form-control border_form" type="text" id="user" name="user" placeholder="username" required>
     </div>
     <div class="form-group">
@@ -71,8 +73,10 @@
     </div>
     <div class="form-group form-check text-left">
     <input class="form-check-input"  type="checkbox" id="rem" name="checkbox">
+    <!--se contrassegnato, i i valori inseriti nei campi di username e pw, saranno inseriti nel localstorage-->
     <label class="form-check-label" for="checkbox" >Remember me</label><br>
     </div>
+    <!--recaptcha-->
     <div class="g-recaptcha mx-auto" data-sitekey="6LeKK_cUAAAAAG-E5cxzPwyNePI55kHC-E7voSM8" ></div> 
   
 
@@ -102,7 +106,7 @@
     
     
     
-    
+    <!--modal dei termini e condizioni-->
     <div class="modal fade" id="modal_terms" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">

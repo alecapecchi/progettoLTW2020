@@ -23,7 +23,7 @@
 <body class="text-center" style="background-image: url(../login/cover_nologo.png);">
 <?php
 $dbconn = pg_connect( "host=localhost port=5432
-dbname=ent_factory user=ale password=insert_passwordA" )
+dbname=ent_factory user=ale password=basi2" )
 or die ("Could not connect: " . pg_last_error());
 if (isset($_GET["id"]) ){
   $order_num = $_GET["id"];

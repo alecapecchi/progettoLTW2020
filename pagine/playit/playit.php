@@ -1,4 +1,5 @@
 <?php 
+  //valori della sessione
    $loggedin=false;
    session_start();
    if (isset($_SESSION['loggedin'])) {
@@ -20,21 +21,23 @@
 <body class="text-center">
   
 <br>
+<!--navbar-->
 <nav class="navbar navbar-light navbar-expand-lg">
+<!--bottone in cui navbar collassa nei dispositivi con uno schermo piccolo-->
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
             <span class="navbar-toggler-icon"></span>
         </button>
     <div class="navbar-collapse collapse w-100 order-1 order-md-1 dual-collapse2">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="" hidden style="color:#80d1e4;">LeftLeftLeftLeftLeft</a>
+                <a class="nav-link"></a>
             </li>
             
         </ul>
     </div>
     <div class="navbar-collapse collapse w-100 order-0 order-md-1 dual-collapse2">
       <ul class="navbar-nav mx-auto">
-
+      <!--link alle pagine principali-->
       <li class="nav-item">
         <a class="nav-link" href="../about/about.php">About</a>
       </li>
@@ -46,12 +49,14 @@
         <a class="nav-link" ></a>
       </li>
       <a class="navbar-brand" href="../home/index.php">
+        <!--logo con link all'homepage-->
         <img src="logo_new.png" alt="Logo" style="width:40px;">
       </a>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
       Order
       </a>
+      <!--pagine dei prodotti-->
       <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
         <a class="dropdown-item" href="../prodotti/board.php">Board Games</a>
         <a class="dropdown-item" href="../prodotti/wt.php">Wooden Toys</a>
@@ -71,6 +76,7 @@
     <div class="navbar-collapse collapse w-100 order-2 dual-collapse2">
         <ul class="navbar-nav ml-auto">
         <?php if ($loggedin): ?>
+          <!--se l'utente è loggato viene mostrato il link al profilo e il logout-->
             <li class="nav-item">
             <a class="nav-link" href="../profile/profile.php"><?php echo 'Welcome, ' . $my_username . '!';?></a>
             </li>
@@ -78,6 +84,7 @@
                 <a class="nav-link" href="../login/logout.php"><u>Logout</u></a>
             </li>
         <?php else: ?>
+        <!--altrimenti i link alle pagine di login e signup-->
             <li class="nav-item">
                 <a class="nav-link" href="../login/login.php"><u>Login</u></a>
             </li>
@@ -108,8 +115,10 @@
 
 
     <?php if ($loggedin): ?>
+    <!--se loggato vai al gioco-->
       <a href="../game/game.php " target="_blank" class="btn btn-sample" role="button">PLAY IT!</a>
         <?php else: ?>
+        <!--altrimenti vai al login-->
           <a href="../login/login.php?fut='g'" class="btn btn-sample" role="button">PLAY IT!</a>
             <?php endif ?>  
 
@@ -134,7 +143,7 @@
 
 
 
-
+<!--modal dei termini e condizioni-->
 <div class="modal fade" id="modal_terms" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">

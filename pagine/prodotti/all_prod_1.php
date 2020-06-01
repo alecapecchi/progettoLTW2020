@@ -4,8 +4,6 @@
     if (isset($_SESSION['loggedin'])) {
     $my_username=$_SESSION['name'];
     $loggedin=$_SESSION['loggedin'];}
-  //  $_SESSION['arraycart']=array();
-  //  $_SESSION['total']=0;
     
     ?>
 
@@ -36,7 +34,7 @@
     <div class="navbar-collapse collapse w-100 order-1 order-md-1 dual-collapse2">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="" hidden style="color:white;">LeftLeftLeftLeftLeft</a>
+                <a class="nav-link"></a>
             </li>
             
         </ul>
@@ -161,7 +159,7 @@
 //controllare che utente, password e port siano corretti per il dispositivo corrente
 
 $dbconn = pg_connect( "host=localhost port=5432
-dbname=ent_factory user=ale password=insert_passwordA")
+dbname=ent_factory user=ale password=basi2")
 
 /*$dbconn = pg_connect( "host=localhost port=5432
 dbname=ent_factory user=postgres password=insert_passwordS" )*/

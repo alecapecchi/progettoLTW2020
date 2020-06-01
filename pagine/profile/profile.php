@@ -1,11 +1,13 @@
 <?php 
+  //valori della sessione
     $loggedin=false;
     session_start();
     if (isset($_SESSION['loggedin'])) {
     $my_username=$_SESSION['name'];
     $loggedin=$_SESSION['loggedin'];
 
-    $dbconn = pg_connect( "host=localhost port=5432 dbname=ent_factory user=ale password=insert_passwordA" ) or die ("Could not connect: " . pg_last_error());
+    //prende i valori dell'utente dal db
+    $dbconn = pg_connect( "host=localhost port=5432 dbname=ent_factory user=ale password=basi2" ) or die ("Could not connect: " . pg_last_error());
     $q = "SELECT * FROM ef_schema.cliente WHERE username='$my_username'";
     $result = pg_query($q);
     $row = pg_fetch_assoc($result);
@@ -16,7 +18,7 @@
   }
     
     else{
-      header("Location:../home/index.php");
+      header("Location:../home/index.php");//se non loggato va all'homepage
     }?>
 
 <!DOCTYPE html>
@@ -33,23 +35,23 @@
 <link  rel="stylesheet" href="custom_prof.css"/>
 <body class="text-center">
 <br>
-
-
-  <nav class="navbar navbar-light navbar-expand-lg">
+<!--navbar-->
+<nav class="navbar navbar-light navbar-expand-lg">
+<!--bottone in cui navbar collassa nei dispositivi con uno schermo piccolo-->
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
             <span class="navbar-toggler-icon"></span>
         </button>
     <div class="navbar-collapse collapse w-100 order-1 order-md-1 dual-collapse2">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="" hidden style="color:white;">LeftLeftLeftLeftLeft</a>
+                <a class="nav-link" ></a>
             </li>
             
         </ul>
     </div>
     <div class="navbar-collapse collapse w-100 order-0 order-md-1 dual-collapse2">
       <ul class="navbar-nav mx-auto">
-
+      <!--link alle pagine principali-->
       <li class="nav-item">
         <a class="nav-link" href="../about/about.php">About</a>
       </li>
@@ -86,6 +88,7 @@
     <div class="navbar-collapse collapse w-100 order-2 dual-collapse2">
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
+            <!--link al profilo e al logout-->
             <a class="nav-link" href="profile.php"><?php echo 'Welcome, ' . $my_username . '!';?></a>
             </li>
             <li class="nav-item">
@@ -98,7 +101,8 @@
 
 
   
-
+<!--card in cui vengono mostrati dati dell'utente-->
+<!--qui l'utente può anche modificare i propri dati-->
   <div class="container bg-faded" >
         <div class="row">
         <div class="col-10 mx-auto" >
@@ -155,12 +159,11 @@
 <h2>Orders</h2>
 <hr class="orange">
 <br>
-
-
+<!--qui vengono presi dal db e mostrati tutti gli ordini effettuati dall'utente-->
     <?php
 //controllare che utente, password eport siano corretti per il dispositivo corrente
 $dbconn = pg_connect( "host=localhost port=5432
-dbname=ent_factory user=ale password=insert_passwordA" )
+dbname=ent_factory user=ale password=basi2" )
 or die ("Could not connect: " . pg_last_error());
 $query="SELECT ef_schema.prodotto.*, ef_schema.ordine_prodotto.*, ef_schema.ordine.*,
 ef_schema.cliente_ordine.*, ef_schema.cliente.*, ef_schema.prodotto.nome as nomeProd
@@ -180,6 +183,7 @@ $total=0;
 while($line=pg_fetch_array($result,null,PGSQL_ASSOC)){
 $count=0;
 echo "\t <tr>\n";
+//prendi i valori dell'ordine
 foreach($line as $col_value){
     if($count==0){$codice_ordine=$col_value;}
     elseif($count==1){$nome=$col_value;}
@@ -201,19 +205,19 @@ foreach($line as $col_value){
 }
 
 if($count2!=0 && $codice_ordine!=$old && $old_us==$my_username){
+  //se abbiamo terminato di prendere i prodotti in un ordine, possiamo chiudere la card e mostrare il totale
     $total=number_format((float)$total, 2, '.', '');
     echo " </table>
     <br>";
-    //if($old_us==$my_username){
-    echo "<h4 class='ml-auto'>Total: $total</h4>";//}
+    echo "<h4 class='ml-auto'>Total: $total</h4>";
     echo "</div></div></div></div>  
 <br>";
 $total=0;}
 
-if($username==$my_username){
+if($username==$my_username){//se il cliente che ha effettuato l'ordine è l'utente corrente 
 if($count2==0 or $codice_ordine!=$old){
 $count3=0;
-
+//tabella dell'ordine
 echo" <div class='container bg-faded'>
 <div class='row'>
 <div class='col-10 mx-auto'>
@@ -245,7 +249,8 @@ $count2+=1;
 $old_us=$username;
 
 }
-if($corrente_se=='t'){
+
+if($username==$my_username){//se l'ultimo ordine presente nel db era dell'utente corrente
 $total=number_format((float)$total, 2, '.', '');
     echo " </table>
     <br>
@@ -277,7 +282,7 @@ pg_close( $dbconn ) ;
 
 
 
-
+<!--modal dei termini e condizioni-->
 <div class="modal fade" id="modal_terms" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">

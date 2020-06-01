@@ -1,13 +1,13 @@
 <?php 
+    //valori della sessione
     $loggedin=false;
     session_start();
     if (isset($_SESSION['loggedin'])) {
     $my_username=$_SESSION['name'];
     $loggedin=$_SESSION['loggedin'];}
     $_SESSION['url'] = $_SERVER['REQUEST_URI'];
-    
-    
-
+    //prende l'url, così nel caso in cui l'utente debba effettuare il login si può tornare all'ultima 
+    //pagina visitata
 ?>
 <!DOCTYPE html>
 <html>
@@ -29,7 +29,9 @@
 
 <body class="text-center">
 <br>
+<!--navbar-->
 <nav class="navbar navbar-light navbar-expand-lg">
+<!--bottone in cui navbar collassa nei dispositivi con uno schermo piccolo-->
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -44,10 +46,13 @@
     <div class="navbar-collapse collapse w-100 order-0 order-md-1 dual-collapse2">
       <ul class="navbar-nav mx-auto">
 
+    <!--link alle pagine principali-->
     <li class="nav-item">
-      <a class="nav-link" href="../about/about.php">About</a>
+    <!--pagina di about-->
+      <a class="nav-link" href="about.php">About</a>
     </li>
     <li class="nav-item">
+      <!--pagina del concorso play it!-->
       <a class="nav-link" href="../playit/playit.php">Play It!</a>
     </li>
 
@@ -55,12 +60,14 @@
       <a class="nav-link" ></a>
     </li>
     <a class="navbar-brand" href="../home/index.php">
+    <!--logo con link all'homepage-->
       <img src="../home/logo_new.png" alt="Logo" style="width:40px;">
     </a>
     <li class="nav-item dropdown">
       <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         Order
       </a>
+      <!--pagine dei prodotti-->
       <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
         <a class="dropdown-item" href="../prodotti/board.php">Board Games</a>
         <a class="dropdown-item" href="../prodotti/wt.php">Wooden Toys</a>
@@ -71,6 +78,7 @@
     </li>
 
     <li class="nav-item">
+    <!--pagina del carrello-->
       <a class="nav-link" href="cart.php">Cart
       <span class="fas fa-shopping-cart"></span>
     </a>
@@ -79,6 +87,7 @@
   </div>
     <div class="navbar-collapse collapse w-100 order-2 dual-collapse2">
         <ul class="navbar-nav ml-auto">
+        <!--se l'utente è loggato viene mostrato il link al profilo e il logout-->
         <?php if ($loggedin): ?>
             <li class="nav-item">
             <a class="nav-link" href="../profile/profile.php"><?php echo 'Welcome, ' . $my_username . '!';?></a>
@@ -86,6 +95,7 @@
             <li class="nav-item">
                 <a class="nav-link" href="../login/logout.php"><u>Logout</u></a>
             </li>
+          <!--altrimenti i link alle pagine di login e signup-->
         <?php else: ?>
             <li class="nav-item">
                 <a class="nav-link" href="../login/login.php"><u>Login</u></a>
@@ -99,7 +109,7 @@
     </div>
   </nav>
 
-
+<!--container con la tabella del carrello: ogni riga un prodotto-->
 <div class="mycontainer">
   <div class="container">
   <div class=" text-center">
@@ -111,6 +121,7 @@
   <br>
   <table class="table table-bordered text-center">
   <tr>
+  <!--header della tabella, con carattersitiche del prodotto-->
   <th>Photo </th>
   <th>Name</th>
   <th>Quantity </th>
@@ -119,42 +130,37 @@
   </tr>
   
   <?php
-  /* //ALE
-  $dbconn = pg_connect( "host=localhost port=5432
-  dbname=ent_factory user=ale password=insert_passwordA" )
-  or die ("Could not connect: " . pg_last_error());
-  //*/
-  
-  /*//SERGIO
-  $dbconn = pg_connect( "host=localhost port=5432
-  dbname=ent_factory user=postgres password=insert_passwordS" )
-  or die ("Could not connect: " . pg_last_error());
-  //*/
+//gli elementi vengono presi solo se il carrello non è vuoto
 if((isset($_SESSION['arraycart'])) && (!empty($_SESSION['arraycart']))){
-  $total=$_SESSION['total'];
+  $total=$_SESSION['total'];//prezzo totale del carrello
   echo "<script>total=$total</script>";
 
-  $array=$_SESSION['arraycart'];
+  $array=$_SESSION['arraycart'];//array con gli elementi del carrello:
+                                //array=(codice prodotto,quantità nel carrello, foto,nome, prezzo singolo)
 
- 
+ //per ogni prodotto nel carrello vengono presi i valori
   $n = count($array);
   for($i = 0; $i < $n; $i++){
-    $codice = $array[$i][0]; 
-    $var1 = $array[$i][1]; //quantity
+    $codice = $array[$i][0]; //codice prodotto
+    $var1 = $array[$i][1]; //quantità
     $var2 = $array[$i][2]; //foto
     $var3 = $array[$i][3]; //nome
     $var4 = $array[$i][4]; //prezzoitem
     ?>
+    <!--forma la riga della tabella -->
     <div id="div<?php echo $i ?>">
     <tr id="tr<?php echo $i ?>">
     
-    <th id="th0<?php echo $i ?>"> <?php echo " <img src=../img/$var2 style='width: 200px;'>"; ?> </th>
-    <th id="th1<?php echo $i ?>"> <?php echo " $var3 " ;?> </th>
-    <th id="th2<?php echo $i ?>"> <?php echo  $var1; ?></th>
-    <th id="th3<?php echo $i ?>"> <?php echo $var1*$var4; ?> <span class="fas fa-euro-sign "></span></th>
-    <th id="th4<?php echo $i ?>"> <?php echo " $var4 " ; ?> <span class="fas fa-euro-sign"></span></th>
+    <th id="th0<?php echo $i ?>"> <?php echo " <img src=../img/$var2 style='width: 200px;'>"; ?> </th><!--foto-->
+    <th id="th1<?php echo $i ?>"> <?php echo " $var3 " ;?> </th><!--nome-->
+    <th id="th2<?php echo $i ?>"> <?php echo  $var1; ?></th><!--quantità-->
+    <th id="th3<?php echo $i ?>"> <?php echo $var1*$var4; ?> <span class="fas fa-euro-sign "></span></th><!--prezzo totale-->
+    <th id="th4<?php echo $i ?>"> <?php echo " $var4 " ; ?> <span class="fas fa-euro-sign"></span></th><!--prezzo unitario-->
     <th id="trush<?php echo $i ?>">
     <?php
+    //hidden form(in una nuova finestra), con i valori del prodotto analizzato:
+    //l'ultimo elemento della tabella è il submit button del form
+    //in removetocart.php riduciamo la quantità del prod nell'array
     $p = $var1*$var4;
     $url="/pagine/cart/cart.php";
      echo "<form method='POST' target='_blank'action='removetocart.php'>
@@ -172,20 +178,26 @@ if((isset($_SESSION['arraycart'])) && (!empty($_SESSION['arraycart']))){
     </tr>
 
     <script>
+  //jquery: al submit del form (ovvero al click del bottone delete nella tabella)
+  // la visualizzazione dei dati cambia
   $(document).ready(function(){
     $("#trushbotton<?php echo $i ?>").click(function(){
+      //se la quantità del prodotto era maggiore di uno, la quantità del prodottoverrà ridotta di 1 e 
+      //il prezzo totale del carrello e del prodotto aggiornati
       if($("#qtyVal<?php echo $i ?>").val()>1){
         new_qty=$("#qtyVal<?php echo $i ?>").val()-1;
         $("#qtyVal<?php echo $i ?>").val(new_qty);//nuovo qty value
         $("#th2<?php echo $i ?>").html(new_qty);//nuovo qty text
         new_price=new_qty*$("#prcVal<?php echo $i ?>").val();
         $("#th3<?php echo $i ?>").html(new_price +" <span class='fas fa-euro-sign'>");//nuovo prezzo prodotto singolo text
-        new_total=total-$("#prcVal<?php echo $i ?>").val();
+        new_total=total-$("#prcVal<?php echo $i ?>").val();//nuovo totale
         total=new_total;
         $("#totalPrc").html(" Total: "+new_total+" <span class='fas fa-euro-sign'></span>");
 
       }
       else{
+      //se la quantità del prodotto era minore di uno, la riga del prodotto verrà nascosta dalla tabella
+      //e il prezzo totale del carrello aggiornato
       new_total=total-$("#prcVal<?php echo $i ?>").val();
       total=new_total;
       if(total<=0){
@@ -213,9 +225,10 @@ if((isset($_SESSION['arraycart'])) && (!empty($_SESSION['arraycart']))){
   </div>
   </table>
 
-  
+  <!--se il carrello è vuoto verrà mostrata la scritta "Cart is empty", anziché la tabella-->
   <br><?php if(isset($_SESSION['arraycart'])&& (!empty($_SESSION['arraycart']))):?>
   <h2 style='color:red;display:none' id='emCar'>Cart is empty</h2>  
+  <!--prezzo totale-->
   <p class="fas fa-shopping-cart" id='totF'value="<?php echo $_SESSION['total']; ?>" 
   id="totalPrc"> Total: <?php echo $_SESSION['total']; ?> <span class="fas fa-euro-sign"></span></p>
   <?php else:?>
@@ -224,10 +237,11 @@ if((isset($_SESSION['arraycart'])) && (!empty($_SESSION['arraycart']))){
   <br>
   <br>
   <div class="form-row">
+  <!--bottoni "back to shop" e "payment", se il carrello è vuoto quest'ultimo è disabilitato-->
     <div class="form-group text-left col-md-6"> <a class="btn btn-outline-primary -left" href="../prodotti/all_prod_1.php">Back to Shop</a></div>
     <?php if(!isset($_SESSION['arraycart']) or (empty($_SESSION['arraycart']))): ?>
       <div class="form-group text-right col-md-6"> <button type="button" class="btn btn-primary" disabled>Go to payment</button> </div>
-    <?php elseif ($loggedin): ?>
+    <?php elseif ($loggedin): ?><!--se l'utente non è loggato vai al login, al click-->
       <div class="form-group text-right col-md-6"> <a class="btn btn-primary" href="../payment/payment.php">Go to payment</a> </div>
       <?php else: ?>
         <div class="form-group text-right col-md-6"> <a class="btn btn-primary" href="../login/login.php?fut='g'">Go to payment</a> </div>
@@ -247,7 +261,7 @@ if((isset($_SESSION['arraycart'])) && (!empty($_SESSION['arraycart']))){
   </div>
 </footer>
 
-
+<!--modal dei termini e condizioni-->
 <div class="modal fade" id="modal_terms" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">

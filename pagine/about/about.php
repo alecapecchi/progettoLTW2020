@@ -33,7 +33,7 @@
     <div class="navbar-collapse collapse w-100 order-1 order-md-1 dual-collapse2">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" hidden style="color:white;"></a>
+                <a class="nav-link" hidden></a>
             </li>
             
         </ul>

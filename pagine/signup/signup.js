@@ -1,5 +1,5 @@
 function validForm(formsignup){
-
+    //controlla che tutti campi siano stati compilati e che le passwords siano uguali
     if(formsignup.inputName.value===""){
         alert("Insert Name");
         return false;
@@ -24,12 +24,10 @@ function validForm(formsignup){
         alert('Oops, recaptcha is not checked!');
         return false;
     }
-    //alert('All good');
     return true;
-    //return true;
 }
 
-function showPassword(){
+function showPassword(){//se viene cliccata la casella, mostra la password
     var pass = document.getElementById("mypassword");
     var pass_conf = document.getElementById("confirmpassword");
     if(pass.type === "password"){
@@ -50,6 +48,6 @@ function validaRecap(){
 
         return true;}
     
-    else{//The recaptcha is not cheched
+    else{
     return false;}
 }

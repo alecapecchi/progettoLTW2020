@@ -56,7 +56,7 @@ if(isset($_POST['sToken'])){
 	$nazione=$_POST['inputNation'];
 		// ALE
     $dbconn = pg_connect( "host=localhost port=5432
-    dbname=ent_factory user=ale password=insert_passwordA" )
+    dbname=ent_factory user=ale password=basi2" )
     or die ("Could not connect: " . pg_last_error());
     
     
