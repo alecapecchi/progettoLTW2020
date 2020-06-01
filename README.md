@@ -26,20 +26,20 @@ Sono presenti le seguenti pagine:<br>
 -Profilo personale dell'utente(pagine/profile/profile.php)<br>
 
 
-Gioco in javascript "Cattura l'oggetto":<br>
+Gioco in javascript "Cattura l'oggetto":
 
-    -Landing Page(pagine/playit/playit.php)<br>
+    -Landing Page(pagine/playit/playit.php)
     
-    -Gioco(pagine/game/game.php)<br>
+    -Gioco(pagine/game/game.php)
 
 
-Dashboard del negozio(pagine/negozio):<br>
+Dashboard del negozio(pagine/negozio):
 
-    -Catalogo(catalogue.php)<br>
+    -Catalogo(catalogue.php)
     
-    -Elenco clienti registrati(users.php)<br>
+    -Elenco clienti registrati(users.php)
     
-    -Ordini correnti(orders.php)<br>
+    -Ordini correnti(orders.php)
     
 
 In ogni directory troviamo ulteriori script php e javascript e fogli di stile css, non elencati qui, per ampliare le funzionalità del progetto e migliorare l'estetica del sito e l'interazione con gli utenti.
