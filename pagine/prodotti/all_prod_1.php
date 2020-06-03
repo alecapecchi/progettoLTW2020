@@ -1,4 +1,5 @@
 <?php 
+  //valori della sessione
     $loggedin=false;
     session_start();
     if (isset($_SESSION['loggedin'])) {
@@ -19,7 +20,9 @@
 <link rel="manifest" href="../fav/site.webmanifest">
 <link  rel="stylesheet" href="../../fontawesome-free-5.13.0-web/css/all.css">
 <link  rel="stylesheet" href="custom_prod.css"/>
-<?php if(isset($_GET['action'])):?>
+<?php //se si è tornati nella pagina dopo aver inserito un prodotto nel carrello,
+// verrà mostrato lo snackbar "Item Added to Cart"
+ if(isset($_GET['action'])):?>
 <body class="text-center" onload="show_popup()">
 <?php else:?>
 <body class="text-center">
@@ -27,7 +30,9 @@
 
 
 <br>
+<!--navbar-->
 <nav class="navbar navbar-light navbar-expand-lg">
+<!--bottone in cui navbar collassa nei dispositivi con uno schermo piccolo-->
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -41,7 +46,7 @@
     </div>
     <div class="navbar-collapse collapse w-100 order-0 order-md-1 dual-collapse2">
       <ul class="navbar-nav mx-auto">
-      
+      <!--link alle pagine principali-->
       <li class="nav-item">
         <a class="nav-link" href="../about/about.php">About</a>
       </li>
@@ -52,6 +57,7 @@
       <li class="nav-item">
         <a class="nav-link" ></a>
       </li>
+       <!--logo con link all'homepage-->
       <a class="navbar-brand" href="../home/index.php">
         <img src="logo_new.png" alt="Logo" style="width:40px;">
       </a>
@@ -59,6 +65,7 @@
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
       Order
       </a>
+      <!--pagine dei prodotti-->
       <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
         <a class="dropdown-item" href="board.php">Board Games</a>
         <a class="dropdown-item" href="wt.php">Wooden Toys</a>
@@ -78,6 +85,7 @@
     <div class="navbar-collapse collapse w-100 order-2 dual-collapse2">
         <ul class="navbar-nav ml-auto">
         <?php if ($loggedin): ?>
+        <!--se l'utente è loggato viene mostrato il link al profilo e il logout-->
             <li class="nav-item">
             <a class="nav-link" href="../profile/profile.php"><?php echo 'Welcome, ' . $my_username . '!';?></a>
             </li>
@@ -85,6 +93,7 @@
                 <a class="nav-link" href="../login/logout.php"><u>Logout</u></a>
             </li>
         <?php else: ?>
+        <!--altrimenti i link alle pagine di login e signup-->
             <li class="nav-item">
                 <a class="nav-link" href="../login/login.php"><u>Login</u></a>
             </li>
@@ -99,7 +108,7 @@
 
 
 
- 
+ <!--menu laterale con link alla prima pagina di tutti i prodotti, e alle diverse categorie di prodotti-->
   <div class="mycontainer">
      <div class="row">
       <div class="col-md-2">
@@ -114,6 +123,7 @@
 
       </div>
       
+      <!--carousel con le immagini dei prodotti più venduti-->
       <div class="col-md-8">
         <div class="container-carousel">
           <div  id="bestproducts" class="carousel slide" data-ride="carousel">
@@ -156,30 +166,31 @@
     <hr class="big">
 
     <?php
-//controllare che utente, password e port siano corretti per il dispositivo corrente
+//prende i dati dei prodotti dal database ordinati in base al codice
 
 $dbconn = pg_connect( "host=localhost port=5432
-dbname=ent_factory user=ale password=basi2")
+dbname=ent_factory user=ale password=inserisciPasswordA")
 
 /*$dbconn = pg_connect( "host=localhost port=5432
-dbname=ent_factory user=postgres password=insert_passwordS" )*/
+dbname=ent_factory user=postgres password=inserisciPasswordS" )*/
 or die ("Could not connect: " . pg_last_error());
 $query="SELECT * FROM ef_schema.prodotto ORDER BY codice";
 $result=pg_query ($query) or die("Query failed: " . pg_last_error());
 
 $count3=0;
 $count2=0;
-while($line=pg_fetch_array($result,null,PGSQL_ASSOC) and $count3<12){
+while($line=pg_fetch_array($result,null,PGSQL_ASSOC) and $count3<12){//prende i primi 12
 if($count2==0){echo "\t<div class='row'>";}
 $count=0;
 foreach($line as $col_value){
+  //dati del prodotto
     if($count==0){$codice=$col_value;}
     if($count==1){$nome=$col_value;}
     elseif($count==3){$prezzo=$col_value;}
     elseif($count==4){$foto=$col_value;}
     elseif($count==5){$quant_magazzino=$col_value;}
     $count+=1;}
-     //aggiunto
+    //crea una card per ogni prodotto
     echo "\t<div  class='col-4 mx-auto' id='card_$count3'>\n
     <div class='card card-body mb-2'>\n
         <img class='card-img-top mx-auto' src=../img/$foto style='width: 200px;'>\n
@@ -190,7 +201,8 @@ foreach($line as $col_value){
     $url="/pagine/prodotti/all_prod_1.php?action=popup#card_".$count3;
 
     if($quant_magazzino>0){
-      
+    //solo se il prodotto è presente in magazzino
+    //se il cliente clicca il bottono di "add to cart", il seguente form verrà sottomesso
      echo "<form method='POST' action='edit-cart.php'>
      <input type='hidden' name='codice' value='$codice'>
      <input type='hidden' name='nome' value='$nome'>
@@ -201,8 +213,10 @@ foreach($line as $col_value){
      </form>";
      
     
-    }//aggiunto
-    else{ echo "<p class='card-text'><i style='color: red;'>Sorry, Item Out of Stock</i></p>";}
+    }
+    else{//solo se il prodotto non è presente in magazzino, verrà mostrata questa scritta, e non 
+      //sarà possibile aggiungere il prodotto al carrello
+       echo "<p class='card-text'><i style='color: red;'>Sorry, Item Out of Stock</i></p>";}
     echo"</div>\n
     </div>\n
 </div>\n";
@@ -220,6 +234,7 @@ pg_close( $dbconn ) ;
 ?>
 
 </div>
+<!--navigazione tra le pagine di tutti i prodotti-->
 <div class="mycontainer">
     <div class="mx-auto">
         <nav aria-label="Page navigation example">
@@ -258,7 +273,7 @@ pg_close( $dbconn ) ;
 
 
 
-
+<!--modal dei termini e condizioni-->
 <div class="modal fade" id="modal_terms" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">

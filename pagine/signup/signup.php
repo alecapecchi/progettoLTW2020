@@ -1,7 +1,7 @@
 <?php
     session_start();
     if (isset($_SESSION['loggedin'])) {
-    header("Location:../home/index.php");
+    header("Location:../home/index.php");//se loggato vai all'homepage
   }
   ?>
 <!DOCTYPE html>
@@ -21,9 +21,10 @@
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 <header>
+<!--navbar-->
     <nav class="navbar navbar-dark bg-dark navbar-expand-lg justify-content-center">
       <ul class="navbar-nav">
-        
+         <!--link alle pagine principali-->
         <li class="nav-item">
           <a class="nav-link" href="../about/about.php">About</a>
         </li>
@@ -64,12 +65,13 @@
    
    
    
-    <div class="container bg-faded" >
+    <div class="container bg-faded" ><!--container del form-->
         <div class="row">
         <div class="col-6 mx-auto">
         <div class="card card-body mb-2" style='border-radius: 20px;'>
     <form action="validareg.php" class="register-form sign-form"
     method="POST" name="formsignup" onsubmit="return validForm(this)">
+    <!--form di login, al submit valida il form in signup.js-->
         <h2 class="text-center font-weight-light pb-2">Sign up</h2>
     <h4 class="font-weight-normal text-left">Profile</h4>
     <div class="form-row">
@@ -103,6 +105,7 @@
           <label for="mypassword">Password:</label>  
           <input type="password" class="form-control border_form" name="inputpw" id="mypassword" required minlength="8" maxlength="25"/>
           <div class="form-group form-check">
+          <!--al click mostra la password-->
           <input class="form-check-input" type="checkbox" onclick="showPassword()" value="" id="checkbox"/>
           <label class="form-check-label" for="checkbox">Show me the password</label>
         </div>
@@ -122,6 +125,7 @@
       
       <div class="g-recaptcha" data-sitekey="6LeKK_cUAAAAAG-E5cxzPwyNePI55kHC-E7voSM8" ></div> 
     <br>
+    <!--se l'utente ha già un'account può andare al login-->
       <p class="text-center">Already have an account? 
         <a href="../login/login.php">Sign in</a>
       </p>
@@ -150,7 +154,7 @@
 
 
 
-
+   <!--modal dei termini e condizioni-->
 <div class="modal fade" id="modal_terms" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">

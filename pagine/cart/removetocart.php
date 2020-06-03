@@ -4,13 +4,14 @@
 if(!(isset($_POST['removetoCart']))){
     header("Location:cart.php");
 }
+//dati del prodotto
 session_start();
 $nome=$_POST['nome'];
 $codice=$_POST['codice'];
 $quantity=$_POST['quantity'];
 $foto=$_POST['foto'];
 $prezzo=$_POST['prezzo'];
-if((isset($_SESSION['arraycart'])) && (!empty($_SESSION['arraycart']))){
+if((isset($_SESSION['arraycart'])) && (!empty($_SESSION['arraycart']))){//se il carrello non è vuoto
     $found=false;
     $count=0;
     foreach ($_SESSION['arraycart'] as $element){

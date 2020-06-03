@@ -1,4 +1,6 @@
 <?php 
+  //pagina di conferma del pagamento
+    //valori della sessione
     $loggedin=false;
     session_start();
     if (isset($_SESSION['loggedin'])) {
@@ -23,20 +25,20 @@
 <body class="text-center" style="background-image: url(../login/cover_nologo.png);">
 <?php
 $dbconn = pg_connect( "host=localhost port=5432
-dbname=ent_factory user=ale password=basi2" )
+dbname=ent_factory user=ale password=inserisciPasswordA" )
 or die ("Could not connect: " . pg_last_error());
-if (isset($_GET["id"]) ){
+if (isset($_GET["id"]) ){ //prende l'id dell'ordine dall'url
   $order_num = $_GET["id"];
 }
-else{ header('Location: ../home/index.php');
+else{ header('Location: ../home/index.php'); //se non c'è va all'homepage
 	exit;}
 
-
+//riinizializza l'array del carrello e il totale
 $_SESSION['arraycart']=array();
 $_SESSION['total']=0;
 
 
-
+//invia l'email al cliente
 $to_email = $email;
 $subject = "Order Confirmation #".$order_num;
 $body = "Hi ".$my_username.",

@@ -8,7 +8,7 @@
     $loggedin=$_SESSION['loggedin'];
 
     //dal db prende l'highscore generale, e l'highscore dell'utente
-    $dbconn = pg_connect( "host=localhost port=5432 dbname=ent_factory user=ale password=basi2" ) or die ("Could not connect: " . pg_last_error());
+    $dbconn = pg_connect( "host=localhost port=5432 dbname=ent_factory user=ale password=inserisciPasswordA" ) or die ("Could not connect: " . pg_last_error());
     $q = "SELECT * FROM ef_schema.cliente WHERE username='$my_username'";
     $result = pg_query($q);
     $row = pg_fetch_assoc($result);

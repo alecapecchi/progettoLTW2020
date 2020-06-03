@@ -1,4 +1,6 @@
 <?php 
+//homepage
+
 //valori della sessione
     $loggedin=false;
     session_start();

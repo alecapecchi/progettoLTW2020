@@ -1,4 +1,6 @@
 <?php 
+    //pagina del carrello, permette all'utente di rimuovere i prodotti
+
     //valori della sessione
     $loggedin=false;
     session_start();
@@ -23,9 +25,7 @@
 <link rel="stylesheet" href="../home/custom.css">
 <link  rel="stylesheet" href="../../fontawesome-free-5.13.0-web/css/all.css">
 <script type = “text/javascript” src = “../../Vue/vue.js”></script>
-<script src=
-"http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.js">
-</script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.js"></script>
 
 <body class="text-center">
 <br>
@@ -38,7 +38,7 @@
     <div class="navbar-collapse collapse w-100 order-1 order-md-1 dual-collapse2">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="" hidden style="color:white;">LeftLeftLeftLeftLeft</a>
+                <a class="nav-link"></a>
             </li>
             
         </ul>

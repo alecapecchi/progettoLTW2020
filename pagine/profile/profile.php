@@ -1,4 +1,6 @@
 <?php 
+//profilo personale dell'utente con dati ed ordini effettuati
+
   //valori della sessione
     $loggedin=false;
     session_start();
@@ -7,7 +9,7 @@
     $loggedin=$_SESSION['loggedin'];
 
     //prende i valori dell'utente dal db
-    $dbconn = pg_connect( "host=localhost port=5432 dbname=ent_factory user=ale password=basi2" ) or die ("Could not connect: " . pg_last_error());
+    $dbconn = pg_connect( "host=localhost port=5432 dbname=ent_factory user=ale password=inserisciPasswordA" ) or die ("Could not connect: " . pg_last_error());
     $q = "SELECT * FROM ef_schema.cliente WHERE username='$my_username'";
     $result = pg_query($q);
     $row = pg_fetch_assoc($result);
@@ -163,7 +165,7 @@
     <?php
 //controllare che utente, password eport siano corretti per il dispositivo corrente
 $dbconn = pg_connect( "host=localhost port=5432
-dbname=ent_factory user=ale password=basi2" )
+dbname=ent_factory user=ale password=inserisciPasswordA" )
 or die ("Could not connect: " . pg_last_error());
 $query="SELECT ef_schema.prodotto.*, ef_schema.ordine_prodotto.*, ef_schema.ordine.*,
 ef_schema.cliente_ordine.*, ef_schema.cliente.*, ef_schema.prodotto.nome as nomeProd

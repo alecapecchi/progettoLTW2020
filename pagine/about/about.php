@@ -1,4 +1,5 @@
 <?php 
+  //pagina di about
     //valori della sessione
     $loggedin=false;
     session_start();
