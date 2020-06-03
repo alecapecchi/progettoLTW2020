@@ -1,6 +1,6 @@
 # Progetto LTW 2020
 <b>ITA</b> <br>
-Progetto del corso Linguaggi e Tecnologie per il Web del anno accademico 2019/2020 tenuto dal professor Riccardo Rosati presso il Dipartimento di Ingegneria informatica, automatica e gestionale de La Sapienza Università di Roma; ad opera di di @alecapecchi e @sergiiotee.
+Progetto del corso Linguaggi e Tecnologie per il Web del anno accademico 2019/2020 tenuto dal professor Riccardo Rosati presso il Dipartimento di Ingegneria informatica, automatica e gestionale de La Sapienza Università di Roma; ad opera di @alecapecchi e @sergiiotee.
 
 Questo è il sito web di un negozio fittizio ("the Entertainment Factory"), che effettua consegne online internazionali.<br>
 
